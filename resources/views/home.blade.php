@@ -6,7 +6,7 @@
     <div class="video-container">
         <video autoplay loop muted poster="./assets/img/poster.png">
             <!-- <source src="./assets/headerVideo.mp4" type="video/mp4"> -->
-            <source src="/assets/headerVideo.mp4" type="video/mp4">
+            <source src="/assets/headerVideo_edit.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
         <div class="overlay-desc">
