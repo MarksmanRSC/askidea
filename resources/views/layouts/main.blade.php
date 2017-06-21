@@ -18,7 +18,7 @@
         .mobile, .desktop {
             position: relative;
             top: 50px;
-            border-bottom: solid 1px #ffffff;
+            /*border-bottom: solid 1px #ffffff;*/
         }
 
         .mobile {
