@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+
+<!-- need to update and fix this -->
+<meta name="description" content="" />
+<meta name="keywords" content="e-commerce, return handling, dropship, Amazon FBA, Amazon returns" />
+<title>..:: Welcome to Marksman - Refurbishment Service Center ::..</title>
+
+<!-- <link rel="shortcut icon" href="/images/gt_favicon.png"> -->
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!-- css -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/style.css" rel="stylesheet">
+<!-- <link href="/css/nav.css" rel="stylesheet"> -->
+<link href="css/fonts.css" rel="stylesheet" />
+<link href="css/animate.css" rel="stylesheet" />
+<!-- <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" /> -->
+
+<link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+<!--<script src="js/modernizr.custom.js"></script>  -->
+<style>
+    body {
+        background: #717171;
+    }
+    .container {
+        background: white;
+        padding: 1em;
+        border-radius: 1em;
+        
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <img src="img/logo.jpg" alt="Marksman RSC" /><br /><br />
+        <form id="shippingForm" method="POST" action="shipping.php">
+
+        <div class="col-sm-6">
+            <center>
+                <h1>Get the edge this holiday season</h1><br />
+                <h2>With our deep shipping discounts</h2>
+            </center><br />
+            <div style="font-size: 1.25em; color: black">
+               You're invited to take advantage of some of the best shipping rates in the eCommerce world
+               this holiday season.<br/><br />
+               Don't just take our word for it. Try our calculator and compare with your current shipping provider.
+            </div>
+            <br/>
+            <img src="/img/fedex.png" />
+            <img src="/img/usps.png" />
+        </div>
+        
+        
+        <div class="col-sm-6" id="dimensions" style="border: 1px #a7a7a7 solid">
+            <h1>Shipping Rate Calculator</h1>
+            <p>
+                Use our shipping rate calculator and compare with your current rates.
+            </p> 
+
+
+         <div id="shippingResult"></div>
+            <h4>Package Dimensions</h4>
+            <label>
+                Length
+                <input class="form-control" type="number" steps=".1" name="length" placeholder="Length" required>
+            </label>
+            <label>
+                Width
+                <input class="form-control" type="number" steps=".1" name="width" placeholder="Width" required>
+            </label>
+            
+            <label>
+                Height
+                <input class="form-control" type="number" steps=".1" name="height" placeholder="Height" required>    
+            </label>
+            
+            <label>
+                Weight (lbs)
+                <input class="form-control" type="number" steps=".1" name="weight" placeholder="Weight" required>    
+            </label>
+
+            
+            <div class="col-xs-6">            
+                <label>
+                    From (zip code)
+                    <input class="form-control" type="number" name="from_zip" placeholder="Zip" required>    
+                </label>                        
+            </div>
+            
+            <!-- <input name="to_street1" placeholder="Street address"> -->
+            <!-- <input name="to_city" placeholder="City"> -->
+            <!-- <input name="to_state" laceholder="State"> -->
+            <div class="col-xs-6">
+                
+                <label>
+                    To (zip code)
+                    <input class="form-control" type="number" name="to_zip" placeholder="Zip" required>    
+                </label>
+            </div>
+            
+            <br /><br />            
+            <center><button id="estBtn" class="form-control btn btn-primary"><b>Get Your Shipping Rate</b></button></center>
+            
+
+            <!-- <input name="from_street1" placeholder="Street address"> -->
+            <!-- <input name="from_city" placeholder="City"> -->
+            <!-- <input name="from_state" placeholder="State"> -->
+            
+        </div>
+
+        
+        
+        </form>
+        
+        <div class="clearfix"></div>
+        <center>
+        <div id="signUp" style="display: none; width: 80%" >
+                You're only seconds away...
+            
+            
+                <center><h1>Sign Up Now</h1></center>     
+                <form method="POST" action="https://app.marksmanrsc.com/?page=register">
+                    <input class="form-control" type="text" name="firstName"  placeholder="First name"/>
+                    <input class="form-control" type="text" name="lastName" placeholder="Last name"/>
+                    <input class="form-control" type="email" name="email" placeholder="Email" />
+                    <input class="form-control" type="password" name="password" placeholder="Password" />
+                    <input class="form-control" type="password" name="password2" placeholder="Confirm Password" />
+                    <input type="hidden" name="privacy" value="On" />
+                    <p class='text-center'>
+                        <button class='btn btn-orange2' style="font-weight: bold"> Sign Up </button>
+                    </p>
+                </form>
+            
+ 
+
+        </div>
+        </center>
+        
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<!-- <script src="/js/jquery.sticky.js"></script> --> 
+<script src="js/smoothscroll.js"></script> 
+<script src="js/wow.min.js"></script> 
+<script defer src="js/custom.js"></script> 
+<!-- <script defer src="https://use.fontawesome.com/911faf4c03.js"></script>  -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />        
+<script>
+    $(document).ready(function () {
+            $('#shippingForm').submit( function (event) {
+               event.preventDefault();
+               
+
+                    
+            });        
+    });
+</script>
+
+</body>
+</html>

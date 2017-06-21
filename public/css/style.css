@@ -1,0 +1,274 @@
+
+.dark-primary-color    { background: #0288D1 !important; }
+.default-primary-color { background: #03A9F4; }
+.light-primary-color   { background: #B3E5FC; }
+.text-primary-color    { color: #FFFFFF; }
+.accent-color          { background: #536DFE; }
+.primary-text-color    { color: #212121; }
+.secondary-text-color  { color: #757575; }
+.divider-color         { border-color: #BDBDBD; }
+
+.navbar-brand {
+    padding: 0;
+}
+
+.highlight {
+    text-transform: uppercase;
+    background-color: rgba(128,128,128,.5);
+    padding: 1em;
+}
+
+.highlight-light {
+    background-color: rgba(255,255,255,.5);
+}
+
+.highlight-dark {
+    background-color: rgba(77,77,77, .7);
+    color: #eee;
+}
+
+footer {
+    min-height: 4em;
+    display: block;
+    background-color: #000;
+    padding: .5em;
+    
+}
+
+.navbar-brand img {
+    max-height: 100%;
+}
+
+/*nav.navbar-fixed-top {
+    box-shadow: 20px, 20px, 20px, 20px #000000;
+    -moz-box-shadow: 20px, 20px, 20px, 20px #000000;
+}*/
+
+nav {
+    box-shadow: 0px 10px 5px 0px rgba(128,128,128,.5);
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: 'Raleway';
+
+    font-weight: bold;
+}
+
+body {
+    line-height: 2;
+}
+
+#main-content {
+    /*padding-top: 50px;*/
+   /*background-color: #eee;*/
+    background-color: #000;
+   font-size: 1.15em;
+}
+
+#main-content .container {
+    box-shadow: 0px 0px 2px 2px rgba(128,128,128,0.5);
+
+    padding-top: 50px;
+    background-color: #fff;
+}
+
+#price-table .row {
+    min-height: 2em;
+
+
+}
+
+#price-table:nth-child(odd) {
+    background-color: #89898;
+}
+
+#case-study {
+    background-image: url("/img/case-study-bg.jpg");
+    background-size: scale;
+    min-height: 70vh;
+    padding: 1em;
+}
+
+#case-study h2 {
+    text-align: center;
+    
+}
+
+#study-arrow {
+    text-align: center;
+     
+}
+
+#study-arrow img {
+    width: 100%;
+}
+
+#certs img {
+    max-width: 100%;
+    max-height: 6em;
+    text-align: center;
+    display: inline-block;
+}
+
+#google-map {
+    max-width: 100%;
+    border: 1px solid #000;
+}
+
+.wtable {
+    width: 100%;
+    border: 1px solid #a7a7a7;
+    box-shadow: 5px 5px 5px #a7a7a7;
+}
+
+.wtable thead tr th {
+    font-family: 'Raleway', sans-serif;
+    background-color: #000;
+    color: #eee;
+    text-align: center;
+}
+
+.wtable tbody tr td, .wtable thead tr th {
+    padding: 1.2em;
+}
+
+.wtable tbody tr td:nth-child(1) {
+    font-weight: bold;
+}
+
+.wtable tbody tr td:nth-child(2) {
+    
+}
+
+.wtable tbody tr td:nth-child(3) {
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+}
+
+.wtable tbody tr:nth-child(odd) {
+    background-color: #a7a7a7;
+}
+
+.cta {
+    text-align: center;
+}
+
+a.cta {
+    display: inline-block;
+    height: 2em;
+    padding: .5em;
+    border-radius: .25em;
+    background-color: #536DFE;
+    vertical-align: middle;
+    line-height: 1;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    font-weight: bold;
+    color: #eee;
+    margin: 1em;
+    border: 1px solid #000;
+    font-size: 1.25em;
+}
+
+/*a.cta:hover {*/
+    /*background-color: #B3E5FC;*/
+/*}*/
+
+
+.quick-links {
+    list-style: none;
+}
+
+.quick-links .head {
+    font-weight: bold;
+    margin-left: -.5em;
+    color: #7a7a7a;
+    border-bottom: 1px solid #7a7a7a;
+}
+
+.card {
+    /*border: 1px solid red;*/
+}
+
+.card .card-title {
+    font-size: 1.25em;
+}
+
+.card .card-subtitle {
+    font-size: 1.25em;
+}
+
+.card-m {
+    min-height: 17em;
+    max-height: 17em;
+}
+
+.card-m {
+    padding: 4px;
+}
+
+.card-content {
+    /*border: 1px solid blue;*/
+    padding: .5em;
+    /*display: block;*/
+    /*height: 100%;*/
+}
+
+.card-m .card-content {
+    max-height: 15em;
+    height: 100%;
+}
+
+.card .card-header {
+    text-align: center;
+}
+
+.card .card-header img {
+    display: inline-block;
+    text-align: center;
+    max-height: 80px;
+    /*border: 1px solid orange;*/
+    /*border-radius: 100%;*/
+    /*padding: 20px;*/
+}
+
+.image-wrapper {
+    /*border: 4px solid #536DFE;*/
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    display: inline-block;
+    min-width: 0;
+    padding: 1em;
+    margin: .25em;
+    background: #fff;
+}
+
+.card .card-header strong {
+    text-transform: uppercase;
+    display: block;
+    /*border: 1px solid black;*/
+    border-bottom: 2px solid #BDBDBD;
+}
+
+/*.card-modal {*/
+    /*overflow-y: scroll;*/
+/*}*/
+
+.card-content .card-modal p {
+    display: none;
+}
+
+.truncate {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-footer {
+    text-align: center;
+}
+
