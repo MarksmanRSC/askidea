@@ -36,8 +36,9 @@
         }
 
         .logo {
-            width: 180px;
+            /*width: 180px;*/
             margin: 10px;
+            max-height: 40px;
         }
 
     </style>
@@ -53,7 +54,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/"><img class="logo" class="img-responsive" src="./assets/img/logo.png"></a>
+                    <a class="navbar-brand" href="/"><img class="logo" class="img-responsive" src="/img/SmallLogoBW_wide.png"></a>
                 </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
@@ -62,9 +63,9 @@
                         <li>
                             <a href="/">Home</a>
                         </li>
-                        <!-- <li>
+                        <li>
                             <a href="/about-us">About Us</a>
-                        </li> -->
+                        </li>
                         <!-- <li><a href="./services.php">Services</a></li> -->
                         <!-- <li><a href="#" data-toggle="modal" data-target="#contactUs">Contact Us</a></li> -->
                     </ul>
@@ -85,20 +86,41 @@
             @yield("content")
 
             <footer>
-                <div class="container-fluid">
-                    <div class="col-md-3">
-                        <img src="/assets/img/logo.png" class="img-responsive" />
+                
+                <div class="container" style="padding-top: 3em; padding-bottom: 1em">
+                    <div class="col-md-4">
+                        <!-- <img src="/assets/img/logo.png" class="img-responsive" />
                         <p>
                             One stop for all your private label manufacturing needs.
                         </p>
+                        
+                        <h4>Ask Idea Sourcing</h4> -->
+                        <p>
+                            <i class="fa fa-phone"></i> <a href="tel:1-513-285-8899">+1-513-285-8899</a>
+                        </p>
+                        <p>
+                            <i class="fa fa-map-marker"></i> 9900 Carver Rd, Suite 200,Cincinnati, OH 45242 
+                        </p>
+                        <!-- <p>
+                            
+                        </p> -->
+                        
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4" >
+                        <!-- <ul> -->
+                            <li><a href="/assets/Privacy_Policy.pdf">Privacy Policy</a>
+                        <!-- </ul> -->
+
+                        
+
 
                     </div>
-
-                    <div class="col-md-3">
-
+                    
+                    <div class="col-md-4">
+                        <span class="badge"><i class="fa fa-facebook fa-2x"></i></span>
+                        
+                        <span class="badge"><i class="fa fa-linkedin fa-2x"></i></span>
                     </div>
 
                 </div>

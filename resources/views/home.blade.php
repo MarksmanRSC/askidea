@@ -2,6 +2,12 @@
 
 @section('content')
 
+<style>
+    .feature-center p, .feature-center ul {
+        font-size: 1.25em;
+    }
+</style>
+
 <div class="desktop">
     <div class="video-container">
         <video autoplay loop muted poster="./assets/img/poster.png">
@@ -34,30 +40,47 @@
 </div>
 <div>
     <div class="container">
+    
+    
+        
+    <div class="text-center" style="font-size: 2.0em; font-weight: lighter; padding: 1em; border: 1px solid #fff; margin-top: .5em; color: #fff;">
+        <h1 style="margin-top: 0">SCALE your business.</h1>
+        <p>
+            You're laid the groundwork. Your business is humming. Now, it's time
+            to take it to the next level. <strong>Ask Idea</strong> is the 
+            valued partner that helps you scale up and increase your profit. 
+            Our product sourcing and logistics services ensure that you can 
+            deliver quality product while creating undeniable efficiencies 
+            that directly impact your growth.
+        </p>
+
+    </div>
+        
+        
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <div class="feature-center animate-box fadeIn animated-fast fpCard" data-animate-effect="fadeIn">
                     <span class="icon"> <img src="/img/column1.png"> <!-- <i class="fa fa-plus" aria-hidden="true"></i> --> </span>
                     <h3>Level 1</h3>
                     <p>
-                        Private Label &amp; Sourcing Research
+                        Private Label &amp; Sourcing Research<br><br>
                     </p>
                     <ul style="text-align: left;">
                         <li>
-                            Product Consultation
+                            We find the optimal supply solution for your products. 
                         </li>
                         <li>
-                            Supplier Assessment
+                            Rsearch potential suppliers in China based on your needs.
                         </li>
                         <li>
-                            Sampling (Optional)
+                            Sample Consolidation &amp; Testing (Optional)
                         </li>
-                        <li>
+                        <!-- <li>
                             Industry Regulations (Optional)
                         </li>
                         <li>
                             Supplier Qualification (Optional)
-                        </li>
+                        </li> -->
                     </ul>
                     <div class="price">
                         $99
@@ -73,7 +96,7 @@
                     <span class="icon"> <img src="/img/column2.png"> <!-- <i class="fa fa-plus" aria-hidden="true"></i> --> </span>
                     <h3>Level 2</h3>
                     <p>
-                        Negotiate &amp; Manage Procurement
+                        Negotiate &amp; Manage Procurement<br><br>
                     </p>
                     <ul style="text-align: left;">
                         <li>
@@ -106,19 +129,16 @@
                     <span class="icon"> <img src="/img/column3.png"> <!-- <i class="fa fa-plus" aria-hidden="true"></i> --> </span>
                     <h3>Level 3</h3>
                     <p>
-                        From idea to market and beyond.
+                        A suite of solutions, with end-to-end support.
                     </p>
                     <ul style="text-align: left;">
                         <li>
-                            Everything from Step 1 &amp; Step 2
-                        </li>
-                        <li>
-                            Plus....
+                            Our experienced staff will assist you in all your sourcing needs from start to finish
                         </li>
 
                     </ul>
                     <div class="price">
-                        $400
+                        $450
                     </div>
                     <p><a href="#" class="btn btn-primary" data-toggle="modal" data-target="#contactUs">Contact Us</a></p>
                     <!-- <a href="#" class="btn btn-primary" onClick="RedmineHelpdeskWidget.toggle()">Contact Us</a> -->

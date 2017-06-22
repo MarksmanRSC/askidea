@@ -506,7 +506,7 @@ img.banner {
 
 footer {
   display: block;
-  background: #000;
+  background: #fff;
   margin-top: 30px;
   /*padding-top: 30px;*/
 }
@@ -725,12 +725,18 @@ img.banner {
 
 footer {
   display: block;
-  background: #000;
+  background: #fff;
   margin-top: 30px;
+  color: #121212;
+  /*min-height: 10em;*/
+}
+
+footer p {
+    color: #121212;
 }
 
 div.fpCard {
-    min-height: 30em;
+    min-height: 38em;
     /*border: 1px solid red;*/
 }
 
