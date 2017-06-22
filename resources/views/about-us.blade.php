@@ -112,7 +112,7 @@
     </p> -->
 
     <p class="text-center" style="font-size: 2.0em; font-weight: lighter; padding: 1em; border: 1px solid #fff; margin-top: .5em;">
-        Finding cost-effective and reliable product sources play right into your
+        Finding cost-effective and reliable product sources plays right into your
         bottom line. But you don't feel equipped to work with suppliers from
         China on your own. <strong>Ask Idea</strong> serves as an extension of
         your team, removing your concerns and obstacles of sourcing overseas
