@@ -46,7 +46,7 @@
     <div class="text-center" style="font-size: 2.0em; font-weight: lighter; padding: 1em; border: 1px solid #fff; margin-top: .5em; color: #fff;">
         <h1 style="margin-top: 0">SCALE your business.</h1>
         <p>
-            You're laid the groundwork. Your business is humming. Now, it's time
+            You've laid the groundwork. Your business is humming. Now, it's time
             to take it to the next level. <strong>Ask Idea</strong> is the 
             valued partner that helps you scale up and increase your profit. 
             Our product sourcing and logistics services ensure that you can 
