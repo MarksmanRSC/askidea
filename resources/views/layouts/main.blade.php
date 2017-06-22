@@ -37,7 +37,8 @@
 
         .logo {
             /*width: 180px;*/
-            margin: 10px;
+            /*margin: 10px;*/
+           margin: 5px;
             max-height: 40px;
         }
 
