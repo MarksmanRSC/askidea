@@ -13,9 +13,7 @@ class Shippo_BatchTest extends TestCase
             'batch_shipments' => array(
                 array(
                     'shipment' => array(    
-                        'object_purpose' => 'PURCHASE',
                         'address_from' => array(
-                            'object_purpose' => 'PURCHASE',
                             'name' => 'Mr Hippo',
                             'street1' => '965 Mission St',
                             'street2' => 'Ste 201',
@@ -27,7 +25,6 @@ class Shippo_BatchTest extends TestCase
                             'email' => 'mrhippo@goshippo.com'
                         ),
                         'address_to' => array(
-                            'object_purpose' => 'PURCHASE',
                             'name' => 'Mrs Hippo',
                             'company' => '',
                             'street1' => 'Broadway 1',
@@ -39,13 +36,15 @@ class Shippo_BatchTest extends TestCase
                             'phone' => '4151234567',
                             'email' => 'mrshippo@goshippo.com'
                         ),
-                        'parcel' => array(
-                            'length' => '5',
-                            'width' => '5',
-                            'height' => '5',
-                            'distance_unit' => 'in',
-                            'weight' => '2',
-                            'mass_unit' => 'oz'
+                        'parcels' => array(
+                            array(
+                                'length' => '5',
+                                'width' => '5',
+                                'height' => '5',
+                                'distance_unit' => 'in',
+                                'weight' => '2',
+                                'mass_unit' => 'oz'
+                            )
                         )
                     )
                 )
@@ -104,7 +103,7 @@ class Shippo_BatchTest extends TestCase
         return array(
             'object_id' => 'a015eb693cca465dbb6523ce6d2e3c65',
             'object_owner' => 'admin',
-            'object_status' => 'VALIDATING',
+            'status' => 'VALIDATING',
             'object_created' => '2016-09-12T15:25:43.465Z',
             'object_updated' => '2016-09-12T15:25:43.465Z',
             'metadata' => $metadata,
@@ -131,7 +130,7 @@ class Shippo_BatchTest extends TestCase
         return array(
             'object_id' => $batch_id,
             'object_owner' => 'shippo@goshippo.com',
-            'object_status' => 'INVALID',
+            'status' => 'INVALID',
             'object_created' => '2016-01-04T00:15:44.394Z',
             'object_updated' => '2016-01-04T00:48:13.841Z',
             'metadata' => '',
@@ -150,7 +149,7 @@ class Shippo_BatchTest extends TestCase
                     'shipment' => null,
                     'transaction' => null,
                     'object_id' => 'e11c95a6788d4ddcaa22f03175838740',
-                    'object_status' => 'INVALID',
+                    'status' => 'INVALID',
                     'messages' => array(
                         array(
                             array(
@@ -177,7 +176,7 @@ class Shippo_BatchTest extends TestCase
         return array(
             'object_id' => $batch_id,
             'object_owner' => 'shippo@goshippo.com',
-            'object_status' => 'VALID',
+            'status' => 'VALID',
             'object_created' => '2016-01-04T00:15:44.394Z',
             'object_updated' => '2016-01-04T00:48:13.841Z',
             'metadata' => '',
@@ -196,7 +195,7 @@ class Shippo_BatchTest extends TestCase
                         'shipment' => '99c326a150f54e638b08623833ef152f',
                         'transaction' => null,
                         'object_id' => 'aa7dea463a5a48b0b8fb21f90e72d779',
-                        'object_status' => 'VALID',
+                        'status' => 'VALID',
                         'messages' => array()
                     ),
                     array(
@@ -206,7 +205,7 @@ class Shippo_BatchTest extends TestCase
                         'shipment' => '2ba26e9733954b3fb8fef38fbb742676',
                         'transaction' => null,
                         'object_id' => 'f11b46440c144ce3b97fb5ddf02b8c71',
-                        'object_status' => 'VALID',
+                        'status' => 'VALID',
                         'messages' => array()
                     )
                 )
@@ -225,7 +224,7 @@ class Shippo_BatchTest extends TestCase
         return array(
             'object_id' => $batch_id,
             'object_owner' => 'shippo@goshippo.com',
-            'object_status' => 'VALID',
+            'status' => 'VALID',
             'object_created' => '2016-01-04T00:15:44.394Z',
             'object_updated' => '2016-01-04T00:48:13.841Z',
             'metadata' => '',
@@ -252,7 +251,7 @@ class Shippo_BatchTest extends TestCase
         return array(
             'object_id' => $batch_id,
             'object_owner' => 'shippo@goshippo.com',
-            'object_status' => 'PURCHASING',
+            'status' => 'PURCHASING',
             'object_created' => '2016-01-04T00:15:44.394Z',
             'object_updated' => '2016-01-04T00:48:13.841Z',
             'metadata' => '',
@@ -271,7 +270,7 @@ class Shippo_BatchTest extends TestCase
                         'shipment' => '77fd9aeaf9b347da9aa95eb250997dc3',
                         'transaction' => null,
                         'object_id' => '2ab2b452392545908d2cef8861a39c35',
-                        'object_status' => 'VALID',
+                        'status' => 'VALID',
                         'messages' => array()
                     )
                 )

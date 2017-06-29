@@ -1,5 +1,5 @@
-#Shippo PHP API wrapper
-[![Build Status](https://travis-ci.org/goshippo/shippo-php-client.svg)](https://travis-ci.org/goshippo/shippo-php-client)
+# Shippo PHP API wrapper
+[![Build Status](https://travis-ci.org/goshippo/shippo-php-client.svg?branch=master)](https://travis-ci.org/goshippo/shippo-php-client)
 
 Shippo is a shipping API that connects you with [multiple shipping carriers](https://goshippo.com/carriers/) (such as USPS, UPS, DHL, Canada Post, Australia Post, UberRUSH and many others) through one interface.
 
@@ -52,6 +52,16 @@ To take advantage of configuration caching, you can set a config parameter in `c
 
 From here you can use the Shippo library anywhere in your application without setting the key when accessing it.
 
+### Testing
+After installing the dependencies above, the test suite may be run:
+
+        ./vendor/bin/phpunit
+
+You may also run individual tests:
+
+        ./vendor/bin/phpunit AddressTest.php
+
+
 ## Getting Started
 
 Simple usage looks like:
@@ -75,7 +85,6 @@ Simple usage looks like:
             ));
             
         var_dump($address);
-    
 ```        
 
 We've created a number of examples to cover the most common use cases. You can find the sample code files in the [examples folder](examples/).
