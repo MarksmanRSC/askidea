@@ -33,36 +33,24 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/"><img class="logo" class="img-responsive"
-                                                  src="/img/SmallLogoBW_wide.png"></a>
+                                                  src="/img/SmallLogoBW_wide.png" style="height: 40px; margin-top: 5px;"></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/">Home</a>
+                    <a href="{{ route('home.index') }}">Home</a>
                 </li>
                 <li>
-                    <a href="/about-us">About Us</a>
+                    <a href="{{ route('about_us.index') }}">About Us</a>
                 </li>
-                <!-- <li><a href="./services.php">Services</a></li> -->
+                <li><a href="{{ route('services.index') }}">Services</a></li>
                 <!-- <li><a href="#" data-toggle="modal" data-target="#contactUs">Contact Us</a></li> -->
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
-
-<div class="header">
-    <div class="mobile">
-        <img class="img-responsive" src="/assets/poster.png">
-        <div class="overlay-desc">
-            <div class="row">
-                <!-- <img class="img-responsive logo" src="./assets/img/400dpiLogo.png"> -->
-                <h1 class="title">Ask Idea Sourcing: Your affordable, reliable, and transparent sourcing agent.</h1>
-            </div>
-        </div>
-    </div>
-</div>
 
 @yield("content")
 
@@ -70,96 +58,31 @@
 
     <div class="container" style="padding-top: 3em; padding-bottom: 1em">
         <div class="col-md-4">
-            <p>
-                <i class="fa fa-phone"></i> <a href="tel:1-513-285-8899">+1-513-285-8899</a>
-            </p>
-            <p>
-                <i class="fa fa-map-marker"></i> 9900 Carver Rd, Suite 200,Cincinnati, OH 45242
-            </p>
+            <ul>
+                <li><i class="fa fa-phone"></i> <a href="tel:1-513-285-8899">+1-513-285-8899</a></li>
+                <li>
+                    <i class="fa fa-map-marker"></i> 9900 Carver Rd, Suite 200,Cincinnati, OH 45242
+                </li>
+            </ul>
         </div>
 
         <div class="col-md-4">
             <ul>
                 <li><a href="/assets/Privacy_Policy.pdf">Privacy Policy</a></li>
+                <li>
+                    Monday-Friday 9:00AM-5:00PM EST
+                </li>
             </ul>
         </div>
 
         <div class="col-md-4">
-            <span class="badge"><i class="fa fa-facebook fa-2x"></i></span>
+            <i class="fa fa-facebook-square fa-3x" style="color: #333;"></i>
 
-            <span class="badge"><i class="fa fa-linkedin fa-2x"></i></span>
+            <i class="fa fa-linkedin-square fa-3x" style="margin-left: 8px; color: #333;"></i>
         </div>
 
     </div>
 </footer>
-
-<div id="contactUs" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">
-                    &times;
-                </button>
-            </div>
-            <div class="modal-body">
-
-                <div class="form-area">
-
-
-                    <form accept-charset="UTF-8" method="post" id="widget_form2" style="margin-bottom: 0px;">
-                        <div id="title" class="title">
-                            <h1 style="color: #121212">Contact Ask Idea</h1>
-                            <p style="color: #121212">
-                                Let us know how we can help.
-                            </p>
-                        </div>
-                        <div id="flash" class="flash"></div>
-                        <input id="username" name="username" placeholder="Your name"
-                               class="form-control required-field" type="text">
-                        <input id="email" name="email" placeholder="Email address"
-                               class="form-control required-field" type="text">
-                        <input id="subject" name="issue[subject]" placeholder="Subject"
-                               class="form-control required-field" type="text">
-                        <select id="project_id" name="project_id" class="form-control projects"
-                                onchange="needReloadProjectData();">
-                            <option value="30">Talk to a sales rep</option>
-                            <option value="31">Customer support</option>
-                            <option value="31">Other</option>
-                        </select>
-                        <textarea cols="55" rows="10" id="description" name="issue[description]"
-                                  placeholder="Let us know how we can help..."
-                                  class="form-control required-field"></textarea>
-                        <div id="container" class="container">
-                            <div id="custom_fields" class="custom_fields">
-                                <input id="tracker_id" name="tracker_id" class="form-control trackers" value="6"
-                                       onchange="needReloadProjectData();" type="hidden">
-                                <div></div>
-                            </div>
-                            <!-- <div id="submit_button" class="submit_button"> -->
-                            <!-- <input name="submit" class="btn" value="Send" title="" type="submit"> -->
-
-                            <!-- </div> -->
-                        </div>
-                        <center>
-
-                            <button class="btn btn-primary">
-                                Send
-                            </button>
-                        </center>
-                    </form>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                    Close
-                </button>
-            </div>
-        </div>
-
-    </div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 

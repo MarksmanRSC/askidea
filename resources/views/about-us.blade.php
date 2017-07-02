@@ -203,7 +203,7 @@
                     <div class="profilePic" style="background-image: url('/img/team/Jerome.jpg');">
                         <div style="text-align: center; background: rgba(0,55,99, 0.5);">
                             <h4 class="name">Jerome Raphael</h4>
-                            <h5 class="title">Sales Consultant</h5>
+                            <h5 class="title">Account Manager</h5>
                         </div>
                     </div>
                     <!-- <div class="jobDesc">
@@ -224,26 +224,6 @@
                         <div style="text-align: center; background: rgba(0,55,99, 0.5);">
                             <h4 class="name">Owen Li</h4>
                             <h5 class="title">Project Manager</h5>
-                        </div>
-                    </div>
-                    <!-- <div class="jobDesc">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at est nunc.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In at est nunc.
-                        </p>
-                    </div> -->
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 animate-box fadeIn animated-fast">
-                <div class="profile">
-                    <div class="profilePic" style="background-image: url('/img/team/Lauren.jpg');">
-                        <div style="text-align: center; background: rgba(0,55,99, 0.5);">
-                            <h4 class="name">Lauren Wenner</h4>
-                            <h5 class="title">Marketing Assistant</h5>
                         </div>
                     </div>
                     <!-- <div class="jobDesc">
