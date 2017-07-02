@@ -174,16 +174,16 @@
             <div class="col-xs-12">
                 <h3>Level 2</h3>
             </div>
-            <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#supplierQualification">
+            <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#inspection">
                 <div class="row image-row">
                     <div class="col-xs-12">
-                        <img src="{{asset('img/icons/services/supplier_qualification.svg')}}"
-                             alt="supplier_qualification">
+                        <img src="{{asset('img/icons/services/inspection.svg')}}"
+                             alt="inspection">
                     </div>
                 </div>
                 <div class="row desc-row">
                     <div class="col-xs-12">
-                        <h4>Supplier Qualification</h4>
+                        <h4>Inspection</h4>
                     </div>
                 </div>
             </div>
@@ -246,7 +246,7 @@
                 <h3>Level 3</h3>
             </div>
             <div class="col-xs-12">
-
+                <h4>Our experienced staff will assist you in all your sourcing needs from start to finish.</h4>
             </div>
         </div>
 
@@ -473,14 +473,14 @@
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="supplierQualification"
-         id="supplierQualification">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="inspection"
+         id="inspection">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
-                            <h2>Supplier Qualification</h2>
+                            <h2>Inspection</h2>
                         </div>
                     </div>
                 </div>
@@ -488,13 +488,11 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 desc-container">
                             <p>
-                                <strong>Factory Check: </strong>
-                                We will arrange our sourcing experts in China to gather information about
-                                suppliers that you intend to deal with. We will arrange a tour of the facilities if we
-                                believe that is
-                                necessary. After that we can provided a detailed supplier qualification report for you
-                                to make a
-                                better sourcing decision, eliminating any lingering questions about the supplier.
+                                <strong>Order Inspection: </strong>
+                                Suppliers typically give a reasonable lead time, but the process can be 10-60.
+                                It all depends on the product’s complexity.
+                                In these weeks, we will perform quality control and testing
+                                before arranging shipping logistics with you.
                             </p>
 
                         </div>

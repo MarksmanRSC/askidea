@@ -194,9 +194,9 @@
                                     <span>Product Consultation</span>
                                 </li>
                                 <li>
-                                <span><img src="{{asset('img/icons/services/product_consultation.svg')}}"
-                                           alt="product_consultation"></span>
-                                    <span>Product Consultation</span>
+                                <span><img src="{{asset('img/icons/services/supplier_assessment.svg')}}"
+                                           alt="supplier_assessment"></span>
+                                    <span>Supplier Assessment</span>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('img/icons/services/sampling.svg')}}"
@@ -215,7 +215,7 @@
                         $99
                     </div>
                     <p>
-                        <a href="{{ url('/services#level1') }}" class="btn btn-primary">Learn more</a>
+                        <a href="{{ url('/services#level1') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
@@ -258,7 +258,7 @@
                                 </li>
                                 <li>
                                     <span><img src="{{asset('img/icons/services/logistics.svg')}}"
-                                           alt="logistics" style="width: 50px;"></span>
+                                           alt="logistics"></span>
                                     <span>Logistics</span>
                                 </li>
                             </ul>
@@ -268,7 +268,7 @@
                         $300
                     </div>
                     <p>
-                        <a href="{{ url('/services#level2') }}" class="btn btn-primary">Learn more</a>
+                        <a href="{{ url('/services#level2') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
@@ -300,7 +300,7 @@
                         $450
                     </div>
                     <p>
-                        <a href="#" class="btn btn-primary">Learn more</a>
+                        <a href="#" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
