@@ -1,6 +1,16 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
+    margin-bottom: 122px;
     background: #333;
     font-family: 'Roboto', sans-serif;
+}
+
+body > .container {
+    padding: 90px 15px 32px;
 }
 
 h1, h2, h3, h4, h5, p {
@@ -155,9 +165,12 @@ img.banner {
 /* Footer CSS */
 
 footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 122px;
     display: block;
     background: #fff;
-    margin-top: 30px;
     color: #121212;
     /*min-height: 10em;*/
 }
@@ -190,4 +203,45 @@ footer ul li {
     list-style: none;
     color: #121212;
     margin: 8px 0;
+}
+
+/* Blog Pages */
+
+.blogBtn {
+    width: 128px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    padding: 0 20px;
+    vertical-align: middle;
+    border: 1px solid black;
+    border-radius: 0;
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    color: black;
+    background-color: white;
+}
+
+.blogBtn:hover {
+    transition-property: background-color, color;
+    transition-duration: 0.3s;
+    background-color: #283A4E;
+    color: white;
+}
+
+/* Top Jumbotron */
+
+#about {
+    background-image: url("/img/services.jpg");
+    min-height: 40em;
+    background-size: cover;
+}
+
+#aboutHead {
+    margin-top: 5em;
+    background-color: rgba(0, 0, 0, .0);
+}
+
+#aboutHead {
+    color: #fff;
 }

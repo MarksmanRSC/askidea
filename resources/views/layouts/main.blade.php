@@ -45,8 +45,32 @@
                 <li>
                     <a href="{{ route('about_us.index') }}">About Us</a>
                 </li>
-                <li><a href="{{ route('services.index') }}">Services</a></li>
-                <!-- <li><a href="#" data-toggle="modal" data-target="#contactUs">Contact Us</a></li> -->
+                <li><a href="{{ route('service.index') }}">Services</a></li>
+                <li><a href="{{ route('blog.index') }}">Blog</a></li>
+
+                @if(!Auth::guest())
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                           aria-expanded="false">
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                    Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endif
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -55,7 +79,7 @@
 @yield("content")
 
 <footer>
-
+    <div class="container" style="border-top: 1px solid #dddddd;"></div>
     <div class="container" style="padding-top: 3em; padding-bottom: 1em">
         <div class="col-md-4">
             <ul>
@@ -84,10 +108,7 @@
     </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
 <script src="/js/jquery.ajax-cross-origin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -143,7 +164,7 @@
 
 @yield('js')
 
-<span><div id="helpdesk_widget"></div> <script type="text/javascript" src="/js/ticket.js"></script></span>
+{{--<span><div id="helpdesk_widget"></div> <script type="text/javascript" src="/js/ticket.js"></script></span>--}}
 </body>
 
 </html>

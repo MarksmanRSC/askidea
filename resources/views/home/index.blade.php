@@ -147,12 +147,7 @@
     </div>
     </div>
 
-    <div class="container"></div>
-    <div class="container-fluid" style="clear: both; margin-top: 4em;">
-
-    </div>
-
-    <div class="container">
+    <div class="container" style="padding-top: 72px;">
 
 
         <div class="text-center"
@@ -215,7 +210,7 @@
                         $99
                     </div>
                     <p>
-                        <a href="{{ url('/services#level1') }}" class="btn btn-primary">Learn More</a>
+                        <a href="{{ url('/service#level1') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
@@ -268,7 +263,7 @@
                         $300
                     </div>
                     <p>
-                        <a href="{{ url('/services#level2') }}" class="btn btn-primary">Learn More</a>
+                        <a href="{{ url('/service#level2') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
@@ -300,7 +295,7 @@
                         $450
                     </div>
                     <p>
-                        <a href="#" class="btn btn-primary">Learn More</a>
+                        <a href="{{ url('/service#level3') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>

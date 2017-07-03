@@ -2,16 +2,6 @@
 
 @section('css')
     <style>
-        #about {
-            background-image: url("/img/services.jpg");
-            min-height: 40em;
-            background-size: cover;
-        }
-
-        #aboutHead {
-            margin-top: 5em;
-            background-color: rgba(0, 0, 0, .0);
-        }
 
         .profile {
             text-align: center;
@@ -72,10 +62,30 @@
             text-align: left;
         }
 
-        #aboutHead {
-            color: #fff;
+        /* lpk report "Why Us" */
+
+        .lpk-row .lpk-card {
+            background-color: white;
+            min-height: 24em;
+            margin-top: 24px;
         }
 
+        .lpk-row ul {
+            padding-left: 24px;
+        }
+
+        .lpk-row ul li h5 {
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+        .lpk-row h4 {
+            font-weight: bolder;
+        }
+
+        .lpk-row h4, .lpk-row h5 {
+            color: black;
+        }
     </style>
 @endsection
 
@@ -97,7 +107,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="padding-top: 32px;">
 
         <div class="row">
             <div class="col-12">
@@ -252,6 +262,88 @@
                 </div>
             </div>
 
+        </div>
+
+        <div class="row lpk-row" style="margin-top: 32px;">
+            <div class="col-xs-12">
+                <h2>Why Us</h2>
+            </div>
+            <div class="col-xs-12">
+                <h4 style="font-weight: bold; color: white; margin: 0; padding: 0;">Ask Idea offers full Sourcing Agent
+                    services, PLUS:</h4>
+            </div>
+            <div class="col-xs-12" style="margin-top: 40px;">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="col-xs-12 lpk-card">
+                            <h4>Simpler, more reliable sourcing from China.</h4>
+                            <ul>
+                                <li><h5>
+                                        We are an American-based company with native teams in both the US and China
+                                    </h5></li>
+                                <li><h5>
+                                        Our sourcing team is on the ground in China, ensuring that every supplier is
+                                        credible
+                                    </h5></li>
+                                <li><h5>
+                                        We alleviate communication, cultural and quality control barriers/concerns
+                                    </h5></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="col-xs-12 lpk-card">
+                            <h4>A consultative approach to sourcing.</h4>
+                            <ul>
+                                <li><h5>
+                                        We find the optimal, complete solution for your end product or portfolio
+                                    </h5></li>
+                                <li><h5>
+                                        We bundle across multiple suppliers for cost savings
+                                    </h5></li>
+                                <li><h5>
+                                        We put the seller first, never based on commission with manufacturers
+                                    </h5></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="col-xs-12 lpk-card">
+                            <h4>An expert understanding of Amazon & overseas logistics.</h4>
+                            <ul>
+                                <li><h5>
+                                        We understand the complexities of Amazon’s requirements and how to help sellers
+                                        best succeed
+                                    </h5></li>
+                                <li><h5>
+                                        We are well-versed in global certification and legal regulations
+                                    </h5></li>
+                                <li><h5>
+                                        We have deep expertise with overseas transportation
+                                    </h5></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-xs-12">
+                        <div class="col-xs-12 lpk-card">
+                            <h4>A suite of solutions, with end-to-end support.</h4>
+                            <ul>
+                                <li><h5>
+                                        Our experienced staff will assist you in all of your sourcing needs, from start
+                                        to finish
+                                    </h5></li>
+                                <li><h5>
+                                        By streamlining the process and creating efficiencies, we enable sellers to
+                                        “scale up” and expand their business
+                                    </h5></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
