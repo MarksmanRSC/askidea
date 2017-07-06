@@ -64,7 +64,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'America/New_York',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,6 +177,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,                          // intervention/image
+        Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,                // spatie/laravel-url-signer
+        Collective\Html\HtmlServiceProvider::class,                              // laravelcollective/html
+
     ],
 
     /*
@@ -225,6 +230,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Image' => Intervention\Image\Facades\Image::class,                       // intervention/image
+        'UrlSigner' => Spatie\UrlSigner\Laravel\UrlSignerFacade::class,           // spatie/laravel-url-signer
+        'Form' => Collective\Html\FormFacade::class,                              // laravelcollective/html
+        'Html' => Collective\Html\HtmlFacade::class,                              // laravelcollective/html
 
     ],
 
