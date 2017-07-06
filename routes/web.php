@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth', 'administrator']], function () {
     Route::get('/blog/edit/{blog}', 'BlogController@edit')->name('blog.edit'); // Show the form for editing the specified blog.
     Route::get('/blog/create', 'BlogController@create')->name('blog.create'); // Show the page for creating a new blog.
     Route::put('/blog/{blog}', 'BlogController@update')->name('blog.update'); // Update the specified blog in storage.
+    Route::delete('/blog/{blog}', 'BlogController@destroy')->name('blog.destroy'); // Remove the specified blog from storage.
 
 
     Route::post('/image/store', 'ImageController@store')->name('image.store'); // Store a newly created image in storage/app/image

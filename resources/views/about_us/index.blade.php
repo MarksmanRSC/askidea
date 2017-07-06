@@ -65,13 +65,16 @@
         /* lpk report "Why Us" */
 
         .lpk-row .lpk-card {
-            background-color: white;
-            min-height: 24em;
+            min-height: 370px;
             margin-top: 24px;
+            padding: 15% 10%;
+            -webkit-filter: grayscale(100%);
         }
 
         .lpk-row ul {
-            padding-left: 24px;
+            margin-top: 32px;
+            padding-left: 0;
+            list-style: none;
         }
 
         .lpk-row ul li h5 {
@@ -84,7 +87,7 @@
         }
 
         .lpk-row h4, .lpk-row h5 {
-            color: black;
+            color: white;
         }
     </style>
 @endsection
@@ -113,11 +116,12 @@
             <div class="col-12">
                 <p class="text-center"
                    style="font-size: 2.0em; font-weight: lighter; padding: 1em; border: 1px solid #fff; margin-top: .5em;">
-                    Finding cost-effective and reliable product sources plays right into your
-                    bottom line. But you don't feel equipped to work with suppliers from
-                    China on your own. <strong>Ask Idea</strong> serves as an extension of
-                    your team, removing your concerns and obstacles of sourcing overseas
-                    by being on-the-ground in China when you can't be.
+                    You've laid the groundwork. Your business is humming. Now, it's time
+                    to take it to the next level. <strong>Ask Idea</strong> is the
+                    valued partner that helps you scale up and increase your profit.
+                    Our product sourcing and logistics services ensure that you can
+                    deliver quality product while creating undeniable efficiencies
+                    that directly impact your growth.
                 </p>
             </div>
         </div>
@@ -274,8 +278,8 @@
             </div>
             <div class="col-xs-12" style="margin-top: 40px;">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="col-xs-12 lpk-card">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="col-xs-12 lpk-card" style="background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url({{asset('img/about_us/index/first.jpeg')}}); background-size: cover;">
                             <h4>Simpler, more reliable sourcing from China.</h4>
                             <ul>
                                 <li><h5>
@@ -292,8 +296,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="col-xs-12 lpk-card">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="col-xs-12 lpk-card" style="background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url({{asset('img/about_us/index/second.jpeg')}}); background-size: cover;">
                             <h4>A consultative approach to sourcing.</h4>
                             <ul>
                                 <li><h5>
@@ -309,8 +313,8 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="col-xs-12 lpk-card">
+                    <div class="col-md-4 col-xs-12">
+                        <div class="col-xs-12 lpk-card" style="background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url({{asset('img/about_us/index/third.jpg')}}); background-size: cover;">
                             <h4>An expert understanding of Amazon & overseas logistics.</h4>
                             <ul>
                                 <li><h5>
@@ -327,21 +331,6 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 col-xs-12">
-                        <div class="col-xs-12 lpk-card">
-                            <h4>A suite of solutions, with end-to-end support.</h4>
-                            <ul>
-                                <li><h5>
-                                        Our experienced staff will assist you in all of your sourcing needs, from start
-                                        to finish
-                                    </h5></li>
-                                <li><h5>
-                                        By streamlining the process and creating efficiencies, we enable sellers to
-                                        “scale up” and expand their business
-                                    </h5></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

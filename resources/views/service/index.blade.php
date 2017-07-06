@@ -34,6 +34,7 @@
             padding-left: 24px;
             height: 300px;
             line-height: 300px;
+            font-size: 50px;
             vertical-align: middle;
         }
 
@@ -60,11 +61,25 @@
 @section('js')
     <script>
 
+        $(document).ready(function() {
+            if(window.location.href.indexOf('stage1') > -1) {
+                $('#productConsultation').modal();
+            } else if(window.location.href.indexOf('stage2') > -1) {
+                $('#priceNegotiation').modal();
+            } else if(window.location.href.indexOf('stage3') > -1) {
+                $('#inspection').modal();
+            }
+
+            $('.nextBtn').click(function(e) {
+                e.preventDefault();
+                var nextId = $(this).attr("data-id");
+                $(nextId).modal();
+            });
+        });
     </script>
 @endsection
 
 @section('content')
-
     <div class="container-fluid" id="about">
         <div class="row">
             <div id="aboutHead" class="jumbotron jumbotron-fluid">
@@ -84,9 +99,10 @@
             </div>
         </div>
 
-        <div class="row" id="level1">
+        <div class="row" id="stage1">
             <div class="col-xs-12">
-                <h3>Level 1</h3>
+                <h3>Stage 1</h3>
+                <hr>
             </div>
 
             <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#productConsultation">
@@ -142,33 +158,34 @@
             </div>
         </div>
 
-        <div class="row" id="level2" style="margin-top: 32px;">
+        <div class="row" id="stage2" style="margin-top: 5em;">
             <div class="col-xs-12">
-                <h3>Level 2</h3>
+                <h3>Stage 2</h3>
+                <hr>
             </div>
-            <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#inspection">
+
+            <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#priceNegotiation">
                 <div class="row image-row">
                     <div class="col-xs-12">
-                        <img src="{{asset('img/icons/services/inspection.svg')}}"
-                             alt="inspection">
+                        <img src="{{asset('img/icons/services/price_negotiation.svg')}}" alt="price_negotiation">
                     </div>
                 </div>
                 <div class="row desc-row">
                     <div class="col-xs-12">
-                        <h4>Inspection</h4>
+                        <h4>Price Negotiation</h4>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#procurement">
+            <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#contractArrangement">
                 <div class="row image-row">
                     <div class="col-xs-12">
-                        <img src="{{asset('img/icons/services/procurement.svg')}}" alt="procurement">
+                        <img src="{{asset('img/icons/services/contract_arrangement.svg')}}" alt="contract_arrangement">
                     </div>
                 </div>
                 <div class="row desc-row">
                     <div class="col-xs-12">
-                        <h4>Procurement</h4>
+                        <h4>Contract Arrangement</h4>
                     </div>
                 </div>
             </div>
@@ -182,6 +199,28 @@
                 <div class="row desc-row">
                     <div class="col-xs-12">
                         <h4>Payment</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" id="stage3" style="margin-top: 5em;">
+            <div class="col-xs-12">
+                <h3>Stage 3</h3>
+                <hr>
+            </div>
+
+            <div class="col-md-3 col-xs-6 service-block" data-toggle="modal" data-target="#inspection">
+                <div class="row image-row">
+                    <div class="col-xs-12">
+                        <img src="{{asset('img/icons/services/inspection.svg')}}"
+                             alt="inspection">
+                    </div>
+                </div>
+                <div class="row desc-row">
+                    <div class="col-xs-12">
+                        <h4>Inspection</h4>
                     </div>
                 </div>
             </div>
@@ -212,15 +251,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="row" id="level3" style="margin-top: 32px;">
-            <div class="col-xs-12">
-                <h3>Level 3</h3>
-            </div>
-            <div class="col-xs-12">
-                <h4>Our experienced staff will assist you in all your sourcing needs from start to finish.</h4>
-            </div>
-        </div>
     </div>
 
 
@@ -232,6 +262,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
                             <h2>Product Consultation</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -255,6 +288,10 @@
                                 payment, then start sourcing right away.
                             </p>
                         </div>
+
+                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#supplierAssessment">Next</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -268,6 +305,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
                             <h2>Supplier Assessment</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -295,6 +335,10 @@
                                 services.
                             </p>
                         </div>
+
+                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#sampling">Next</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -308,6 +352,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
                             <h2>Sampling</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -327,6 +374,10 @@
                             </p>
 
                         </div>
+
+                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#industryRegulations">Next</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -340,6 +391,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
                             <h2>Industry Regulations</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -371,6 +425,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
                             <h2>Inspection</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -386,50 +443,65 @@
                             </p>
 
                         </div>
+
+                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#orderMonitoring">Next</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="procurement" id="procurement">
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="priceNegotiation" id="priceNegotiation">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
-                            <h2>Procurement</h2>
+                            <h2>Price Negotiation</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
                 <div class="row desc-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 desc-container">
-                            <p>
-                                <strong>Final Confirmation: </strong>
-                                You now have a clear idea about your product specification and industry
-                                regulations and are ready to finalize the order with a supplier. At this point, you&#39;d
-                                like a
-                                professional team to handle your order with the factory in China. We will offer a
-                                non-binding
-                                offer once we know all the details. After we receive your payment, we will coordinate
-                                all the
-                                details between the supplier and you.
-                            </p>
-                            <p>
-                                <strong>Order Placement: </strong>
-                                We will first go through all the requirements that you want implemented in
-                                the product, production, inspection, and shipment. We&#39;ll place the order to the
-                                factory in your
-                                name and discuss the requirements with the manufacturer. It could take several rounds of
-                                communication to let both sides agree with the conditions. To better track the progress,
-                                we will
-                                create a production plan and update you with all details of the order process with a
-                                clear time
-                                line. Last but not least, we will send you the invoice from the factory so that you can
-                                make a
-                                down payment for your products. (Usually, this is 30% of the total order value)
-                            </p>
+
+                        </div>
+
+                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#contractArrangement">Next</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="contractArrangement" id="contractArrangement">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="row title-row">
+                    <div class="col-xs-12">
+                        <div class="col-xs-12 title-container">
+                            <h2>Contract Arrangement</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row desc-row">
+                    <div class="col-xs-12">
+                        <div class="col-xs-12 desc-container">
+
+                        </div>
+
+                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#payment">Next</a>
                         </div>
                     </div>
                 </div>
@@ -444,6 +516,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
                             <h2>Payment</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -474,6 +549,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
                             <h2>Order Monitoring</h2>
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -491,6 +569,10 @@
                             </p>
 
                         </div>
+
+                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#logistics">Next</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -504,7 +586,9 @@
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container" style="position:relative;">
                             <h2>Logistics</h2>
-                            <img src="/img/SmallLogoBW_wide.png" alt="" style="position:absolute; top: 60px; right: -400px;">
+                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            </span>
                         </div>
                     </div>
                 </div>

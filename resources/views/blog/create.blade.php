@@ -118,7 +118,7 @@
                 <div id="blogEdit"></div>
             </div>
             <div class="col-xs-12">
-                {{ Form::submit('Submit', ['class' => 'btn btn-primary', 'style' => 'cursor: pointer;']) }}
+                {{ Form::submit('Submit', ['class' => 'btn blogBtn', 'style' => 'cursor: pointer;']) }}
                 <a href="{{ route('blog.index') }}" class="btn blogBtn" style="margin-left: 15px;">Cancel</a>
             </div>
         </div>

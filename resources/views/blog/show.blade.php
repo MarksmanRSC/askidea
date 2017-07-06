@@ -1,5 +1,13 @@
 @extends('layouts.main')
 
+@section('meta')
+    <meta property="og:url" content="{{URL::current()}}"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="{{$blog->title}}"/>
+    <meta property="og:description" content="{{$desc}}"/>
+    <meta property="og:image" content="{{ route("image.show", ['filename' => $blog->cover_image]) }}"/>
+@endsection
+
 @section('css')
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 
@@ -25,13 +33,33 @@
 @endsection
 
 @section('js')
-    <script>
 
-    </script>
 @endsection
 
 
 @section('content')
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '283295728803313',
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <div class="container">
         @if(!Auth::guest())
             <div class="row">
@@ -60,6 +88,15 @@
                     <p style="font-size: 17px;">
                         {!! $blog->content !!}
                     </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="fb-share-button"
+                     data-href="{{URL::current()}}"
+                     data-layout="button_count">
                 </div>
             </div>
         </div>

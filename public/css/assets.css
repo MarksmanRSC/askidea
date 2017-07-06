@@ -85,11 +85,8 @@ span.icon img {
 }
 
 h1.title {
-    font-size: 30px;
+    font-size: 50px;
     text-align: center;
-    border: solid #fff 2px;
-    padding: 15px;
-    border-radius: 5px;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.75);
 }
 

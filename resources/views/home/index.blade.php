@@ -139,7 +139,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <!-- <img class="img-responsive logo" src="./assets/img/400dpiLogo.png"> -->
                         <h1 class="title">Ask Idea Sourcing</h1>
-                        <h2>Your affordable, reliable, transparent sourcing agent</h2>
+                        <h2>We help you find cost-effective and reliable Chinese suppliers</h2>
                     </div>
                 </div>
             </div>
@@ -154,12 +154,11 @@
              style="font-size: 2.0em; font-weight: lighter; padding: 1em; border: 1px solid #fff; margin-top: .5em; color: #fff;">
             <h1 style="margin-top: 0">SCALE your business.</h1>
             <p>
-                You've laid the groundwork. Your business is humming. Now, it's time
-                to take it to the next level. <strong>Ask Idea</strong> is the
-                valued partner that helps you scale up and increase your profit.
-                Our product sourcing and logistics services ensure that you can
-                deliver quality product while creating undeniable efficiencies
-                that directly impact your growth.
+                Finding cost-effective and reliable product sources plays right into your
+                bottom line. But you don't feel equipped to work with suppliers from
+                China on your own. <strong>Ask Idea</strong> serves as an extension of
+                your team, removing your concerns and obstacles of sourcing overseas
+                by being on-the-ground in China when you can't be.
             </p>
 
         </div>
@@ -172,12 +171,12 @@
                             <!-- <i class="fa fa-plus" aria-hidden="true"></i> --> </span>
                     <div class="row title-row">
                         <div class="col-xs-12">
-                            <h3>Level 1</h3>
+                            <h3>Stage 1</h3>
                         </div>
                     </div>
                     <div class="row desc-row" style="height: 50px;">
                         <div class="col-xs-12 text-center">
-                            <p>Private Label &amp; Sourcing Research</p>
+                            <p>Find the Best Supplier for Your Product</p>
                         </div>
                     </div>
                     <div class="row bullet-row">
@@ -196,7 +195,7 @@
                                 <li>
                                     <span><img src="{{asset('img/icons/services/sampling.svg')}}"
                                                alt="sampling">
-                                    </span><span>Sampling</span>
+                                    </span><span>Sampling (Optional)</span>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('img/icons/services/industry_regulations.svg')}}"
@@ -207,10 +206,10 @@
                         </div>
                     </div>
                     <div class="price">
-                        $99
+                        $99 <span style="font-size: 20px;">for the base price</span>
                     </div>
                     <p>
-                        <a href="{{ url('/service#level1') }}" class="btn btn-primary">Learn More</a>
+                        <a href="{{ url('/service#stage1') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
@@ -220,50 +219,40 @@
                             <!-- <i class="fa fa-plus" aria-hidden="true"></i> --> </span>
                     <div class="row title-row">
                         <div class="col-xs-12">
-                            <h3>Level 2</h3>
+                            <h3>Stage 2</h3>
                         </div>
                     </div>
                     <div class="row desc-row" style="height: 50px;">
                         <div class="col-xs-12 text-center">
-                            <p>Price Negotiation & Procurement Managemen</p>
+                            <p>Negotiate the best deal for you</p>
                         </div>
                     </div>
                     <div class="row bullet-row">
                         <div class="col-xs-12">
                             <ul style="text-align: left;">
                                 <li>
-                                    <span><img src="{{asset('img/icons/services/inspection.svg')}}"
-                                           alt="inspection"></span>
-                                    <span>Inspection</span>
+                                    <span><img src="{{asset('img/icons/services/price_negotiation.svg')}}"
+                                               alt="price_negotiation"></span>
+                                    <span>Price Negotiation</span>
                                 </li>
                                 <li>
-                                    <span><img src="{{asset('img/icons/services/procurement.svg')}}"
-                                           alt="procurement"></span>
-                                    <span>Procurement</span>
+                                    <span><img src="{{asset('img/icons/services/contract_arrangement.svg')}}"
+                                               alt="contract_arrangement"></span>
+                                    <span>Contract Arrangement</span>
                                 </li>
                                 <li>
                                     <span><img src="{{asset('img/icons/services/payment.svg')}}"
                                            alt="payment"></span>
-                                    <span>payment</span>
-                                </li>
-                                <li>
-                                    <span><img src="{{asset('img/icons/services/order_monitoring.svg')}}"
-                                           alt="order_monitoring"></span>
-                                    <span>Order Monitoring</span>
-                                </li>
-                                <li>
-                                    <span><img src="{{asset('img/icons/services/logistics.svg')}}"
-                                           alt="logistics"></span>
-                                    <span>Logistics</span>
+                                    <span>Payment</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="price">
-                        $300
+                        $150 <span style="font-size: 20px;">for the base price</span>
                     </div>
                     <p>
-                        <a href="{{ url('/service#level2') }}" class="btn btn-primary">Learn More</a>
+                        <a href="{{ url('/service#stage2') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
@@ -274,33 +263,43 @@
                             <!-- <i class="fa fa-plus" aria-hidden="true"></i> --> </span>
                     <div class="row title-row">
                         <div class="col-xs-12">
-                            <h3>Level 3</h3>
+                            <h3>Stage 3</h3>
                         </div>
                     </div>
                     <div class="row desc-row" style="height: 50px;">
                         <div class="col-xs-12 text-center">
-                            <p>A suite of solutions, with end-to-end support.</p>
+                            <p>Safely handle your product door to door</p>
                         </div>
                     </div>
                     <div class="row bullet-row">
                         <div class="col-xs-12">
-                            <ul style="text-align: left; padding: 0 32px;">
+                            <ul style="text-align: left;">
                                 <li>
-                                    Our experienced staff will assist you in all your sourcing needs from start to finish
+                                    <span><img src="{{asset('img/icons/services/inspection.svg')}}"
+                                               alt="inspection"></span>
+                                    <span>Inspection</span>
+                                </li>
+                                <li>
+                                    <span><img src="{{asset('img/icons/services/order_monitoring.svg')}}"
+                                               alt="order_monitoring"></span>
+                                    <span>Order Monitoring</span>
+                                </li>
+                                <li>
+                                    <span><img src="{{asset('img/icons/services/logistics.svg')}}"
+                                               alt="logistics"></span>
+                                    <span>Logistics</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
                     <div class="price">
-                        $450
+                        $200 <span style="font-size: 20px;">for the base price</span>
                     </div>
                     <p>
-                        <a href="{{ url('/service#level3') }}" class="btn btn-primary">Learn More</a>
+                        <a href="{{ url('/service#stage3') }}" class="btn btn-primary">Learn More</a>
                     </p>
                 </div>
             </div>
-
-
         </div>
     </div>
 

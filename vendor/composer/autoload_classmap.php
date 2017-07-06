@@ -2062,7 +2062,6 @@ return array(
     'PHP_Token_YIELD' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'PHP_Token_YIELD_FROM' => $vendorDir . '/phpunit/php-token-stream/src/Token.php',
     'Parsedown' => $vendorDir . '/erusev/parsedown/Parsedown.php',
-    'ParsedownTest' => $vendorDir . '/erusev/parsedown/test/ParsedownTest.php',
     'PhpParser\\Autoloader' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Autoloader.php',
     'PhpParser\\Builder' => $vendorDir . '/nikic/php-parser/lib/PhpParser/Builder.php',
     'PhpParser\\BuilderAbstract' => $vendorDir . '/nikic/php-parser/lib/PhpParser/BuilderAbstract.php',

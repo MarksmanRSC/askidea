@@ -71,7 +71,12 @@ class BlogController extends Controller
      */
     public function show(Blog $blog)
     {
-        return view('blog.show', ['blog' => $blog]);
+        $desc = $blog->content;
+        $desc = preg_replace('/<.+?>/i', '', $desc); // remove all html tags
+        $desc = strlen($desc) > 300 ? substr($desc, 0, 300) : $desc; // limit to 300 characters
+        $desc .= ' ......';
+
+        return view('blog.show', ['blog' => $blog, 'desc' => $desc]);
     }
 
     /**
@@ -118,6 +123,8 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+
+        return redirect(route('blog.index'));
     }
 }

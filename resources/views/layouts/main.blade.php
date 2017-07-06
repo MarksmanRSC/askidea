@@ -5,6 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    @yield('meta')
+
     <title>Ask Idea Sourcing - Your Private Label Partner</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
@@ -21,6 +23,17 @@
 </head>
 
 <body>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-101476693-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -164,7 +177,7 @@
 
 @yield('js')
 
-{{--<span><div id="helpdesk_widget"></div> <script type="text/javascript" src="/js/ticket.js"></script></span>--}}
+<span><div id="helpdesk_widget"></div> <script type="text/javascript" src="/js/ticket.js"></script></span>
 </body>
 
 </html>

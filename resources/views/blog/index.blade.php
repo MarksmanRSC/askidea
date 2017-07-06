@@ -68,6 +68,31 @@
                         <a href="{{ route('blog.show', $blog) }}" class="btn blogBtn">Read More</a>
                         @if(!Auth::guest() && Auth::user()->isAdmin())
                             <a href="{{ route('blog.edit', $blog) }}" class="btn blogBtn">Edit</a>
+                            <a href="#" class="btn blogBtn" data-toggle="modal" data-target="#deleteModal{{$blog->id}}">Delete</a>
+
+                            <div class="modal fade" id="deleteModal{{$blog->id}}" tabindex="-1" role="dialog">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title" id="exampleModalLabel">Warning</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Are you sure you want to delete this blog?</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <a href="#" class="btn btn-danger"
+                                               onclick="event.preventDefault(); document.getElementById('deleteModalForm{{$blog->id}}').submit();">Delete</a>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                            <form id="deleteModalForm{{$blog->id}}" action="{{route('blog.destroy', ['blog' => $blog])}}" method="POST" style="display: none;">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </div>
+                                        @yield('other')
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                     </div>
                 </div>
