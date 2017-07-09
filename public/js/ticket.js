@@ -18,7 +18,7 @@ function getXmlHttp(){
 var RedmineHelpdeskWidget = {
   widget: document.getElementById('helpdesk_widget'),
   widget_button: null,
-  width: 400,
+  width: 335,
   height: 500,
   margin: 20,
   iframe: null,
@@ -479,10 +479,10 @@ var RedmineHelpdeskWidget = {
         break;
       case 'bottomLeft':
       case 'bottomRight':
-        this.widget_button.style.borderRadius = '0 100% 100%';
+        this.widget_button.style.borderRadius = '100% 100%';
         break;
       default:
-        this.widget_button.style.borderRadius = '0 100% 100%';
+        this.widget_button.style.borderRadius = '100% 100%';
     }
     // this.widget_button.style.webkitTransform = 'rotate(45deg)';
     // this.widget_button.style.mozTransform = 'rotate(45deg)';

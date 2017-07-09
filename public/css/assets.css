@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    margin-bottom: 122px;
+    margin-bottom: 132px;
     background: #333;
     font-family: 'Roboto', sans-serif;
 }
@@ -165,12 +165,30 @@ footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 122px;
+    height: 132px;
     display: block;
     background: #fff;
     color: #121212;
     /*min-height: 10em;*/
 }
+
+footer ul {
+    padding: 0;
+}
+
+@media screen and (min-width: 992px) {
+    footer > .container > .row {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    footer > .container > .row {
+        margin-top: 40px;
+    }
+}
+
+/* End Footer */
 
 ul.stuff {
     min-height: 10em;
@@ -184,6 +202,8 @@ ul.stuff {
 
 .mobile {
     display: none;
+    background: url(/assets/poster.png) !important;
+    background-size: cover !important;
 }
 
 @media screen and (max-width: 776px) {
@@ -228,17 +248,51 @@ footer ul li {
 
 /* Top Jumbotron */
 
-#about {
+.page-title-container {
     background-image: url("/img/services.jpg");
-    min-height: 40em;
     background-size: cover;
 }
 
-#aboutHead {
-    margin-top: 5em;
-    background-color: rgba(0, 0, 0, .0);
+@media screen and (min-width: 768px) {
+    .page-title-container {
+        min-height: 40em;
+    }
 }
 
-#aboutHead {
+.page-title-container .jumbotron {
+    margin-top: 5em;
+    background-color: rgba(0, 0, 0, .0);
     color: #fff;
+}
+
+.page-desc-row {
+    padding: 15px;
+}
+
+.page-desc-row > div {
+    padding: 8px;
+    border: 1px solid #fff;
+}
+
+.page-desc-row > div > h1 {
+    text-align: center;
+
+}
+
+.page-desc-row > div > p {
+    text-align: center;
+    font-size: 2.0em;
+    font-weight: lighter;
+    margin-top: .5em;
+}
+
+@media screen and (max-width: 767px) {
+    .page-desc-row > div > h1 {
+        font-size: 30px;
+
+    }
+
+    .page-desc-row > div > p {
+        font-size: 22px;
+    }
 }

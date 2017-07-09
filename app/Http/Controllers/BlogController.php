@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('updated_at', 'desc')->get();
 
         foreach ($blogs as &$blog) {
             $content = $blog->content;

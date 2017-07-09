@@ -99,9 +99,9 @@
 
 @section('content')
 
-    <div class="container-fluid" id="about">
+    <div class="container-fluid page-title-container">
         <div class="row">
-            <div id="aboutHead" class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid">
                 <h1 class="display-3">Your <u>China</u> Connection</h1>
                 <p class="lead text-center">
                     <u>Ask Idea is your private label manufacturing partner.</u>
@@ -111,11 +111,9 @@
     </div>
 
     <div class="container" style="padding-top: 32px;">
-
-        <div class="row">
-            <div class="col-12">
-                <p class="text-center"
-                   style="font-size: 2.0em; font-weight: lighter; padding: 1em; border: 1px solid #fff; margin-top: .5em;">
+        <div class="row page-desc-row">
+            <div class="col-xs-12">
+                <p>
                     You've laid the groundwork. Your business is humming. Now, it's time
                     to take it to the next level. <strong>Ask Idea</strong> is the
                     valued partner that helps you scale up and increase your profit.
@@ -279,7 +277,7 @@
             <div class="col-xs-12" style="margin-top: 40px;">
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                        <div class="col-xs-12 lpk-card" style="background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url({{asset('img/about_us/index/first.jpeg')}}); background-size: cover;">
+                        <div class="col-xs-12 lpk-card" style="background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url({{asset('img/about_us/index/first.jpg')}}); background-size: cover;">
                             <h4>Simpler, more reliable sourcing from China.</h4>
                             <ul>
                                 <li><h5>
@@ -290,14 +288,14 @@
                                         credible
                                     </h5></li>
                                 <li><h5>
-                                        We alleviate communication, cultural and quality control barriers/concerns
+                                        We alleviate communication, cultural and quality control barriers
                                     </h5></li>
                             </ul>
                         </div>
                     </div>
 
                     <div class="col-md-4 col-xs-12">
-                        <div class="col-xs-12 lpk-card" style="background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url({{asset('img/about_us/index/second.jpeg')}}); background-size: cover;">
+                        <div class="col-xs-12 lpk-card" style="background: linear-gradient(rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.7)), url({{asset('img/about_us/index/second.jpg')}}); background-size: cover;">
                             <h4>A consultative approach to sourcing.</h4>
                             <ul>
                                 <li><h5>
@@ -330,7 +328,6 @@
                             </ul>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

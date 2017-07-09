@@ -80,14 +80,16 @@
                 </spam>
             </div>
             <div class="col-xs-12">
-                <div class="col-xs-12" style="margin-top: 24px;">
-                    <img src="{{ route("image.show", ['filename' => $blog->cover_image]) }}"
-                         alt="{{ $blog->cover_image }}" style="width: 100%; ">
-                </div>
-                <div class="col-xs-12" style="margin-top: 16px;">
-                    <p style="font-size: 17px;">
-                        {!! $blog->content !!}
-                    </p>
+                <div class="row">
+                    <div class="col-xs-12" style="margin-top: 24px;">
+                        <img src="{{ route("image.show", ['filename' => $blog->cover_image]) }}"
+                             alt="{{ $blog->cover_image }}" style="width: 100%; ">
+                    </div>
+                    <div class="col-xs-12" style="margin-top: 16px;">
+                        <p style="font-size: 17px;">
+                            {!! $blog->content !!}
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

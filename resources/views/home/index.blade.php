@@ -108,15 +108,13 @@
 
 
 @section('content')
-
-    <div class="header">
-        <div class="mobile">
-            <img class="img-responsive" src="/assets/poster.png">
-            <div class="overlay-desc">
-                <div class="row">
-                    <!-- <img class="img-responsive logo" src="./assets/img/400dpiLogo.png"> -->
-                    <h1 class="title">Ask Idea Sourcing: Your affordable, reliable, and transparent sourcing agent.</h1>
-                </div>
+    <div class="container-fluid page-title-container mobile">
+        <div class="row">
+            <div class="jumbotron jumbotron-fluid">
+                <h1 class="display-3">Ask Idea Sourcing</h1>
+                <p class="lead text-center">
+                    <u>We help you find cost-effective and reliable Chinese suppliers</u>
+                </p>
             </div>
         </div>
     </div>
@@ -148,20 +146,19 @@
     </div>
 
     <div class="container" style="padding-top: 72px;">
-
-
-        <div class="text-center"
-             style="font-size: 2.0em; font-weight: lighter; padding: 1em; border: 1px solid #fff; margin-top: .5em; color: #fff;">
-            <h1 style="margin-top: 0">SCALE your business.</h1>
-            <p>
-                Finding cost-effective and reliable product sources plays right into your
-                bottom line. But you don't feel equipped to work with suppliers from
-                China on your own. <strong>Ask Idea</strong> serves as an extension of
-                your team, removing your concerns and obstacles of sourcing overseas
-                by being on-the-ground in China when you can't be.
-            </p>
-
+        <div class="row page-desc-row">
+            <div class="col-xs-12">
+                <h1>You China Connection</h1>
+                <p>
+                    Finding cost-effective and reliable product sources plays right into your
+                    bottom line. But you don't feel equipped to work with suppliers from
+                    China on your own. <strong>Ask Idea</strong> serves as an extension of
+                    your team, removing your concerns and obstacles of sourcing overseas
+                    by <strong>being on-the-ground in China</strong> when you can't be.
+                </p>
+            </div>
         </div>
+
 
 
         <div class="row row-table">
@@ -198,9 +195,10 @@
                                     </span><span>Sampling (Optional)</span>
                                 </li>
                                 <li>
-                                    <span><img src="{{asset('img/icons/services/industry_regulations.svg')}}"
+                                    <span style="height: 100%;"><img src="{{asset('img/icons/services/industry_regulations.svg')}}"
                                                alt="industry_regulations"></span>
-                                    <span>Industry Regulations</span>
+                                    <span style="height: 100%;">Industry Regulations
+                                        <br><span style="margin-left: 50px;"></span>(Optional)</span>
                                 </li>
                             </ul>
                         </div>

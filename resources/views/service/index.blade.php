@@ -26,21 +26,28 @@
         }
 
         .modal .title-row .title-container {
-            height: 300px;
+            height: 200px;
             background-color: #666666;
         }
 
         .modal .title-row .title-container h2 {
             padding-left: 24px;
-            height: 300px;
-            line-height: 300px;
-            font-size: 50px;
+            height: 200px;
+            line-height: 200px;
+            font-size: 45px;
             vertical-align: middle;
+            margin: 0;
         }
 
         .modal .desc-row .desc-container {
-            height: 350px;
+            min-height: 350px;
             margin-top: 64px;
+        }
+
+        @media screen and (max-width: 767px) {
+            .modal .desc-row {
+               padding-bottom: 50px;
+            }
         }
 
         .modal .desc-row .desc-container p {
@@ -53,6 +60,44 @@
 
         .modal .desc-row .desc-container p strong {
             color: #4d88b4;
+        }
+
+        .modal .modal-logo {
+            position: absolute;
+            height: 150px;
+            top: 25px;
+            right: 50px;
+        }
+
+        .modal .modal-logo img {
+            height: 100%;
+            opacity: 0.2;
+        }
+
+        @media screen and (max-width: 991px) {
+            .modal .modal-logo {
+                height: 100px;
+                top: 50px;
+                right: 25px;
+            }
+
+            .modal .title-row .title-container h2 {
+                padding-left: 12px;
+                font-size: 30px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            .modal .modal-logo {
+                height: 80px;
+                top: 60px;
+                right: 10px;
+                opacity: 0.5;
+            }
+
+            .modal .title-row .title-container h2 {
+                font-size: 25px;
+            }
         }
 
     </style>
@@ -72,17 +117,20 @@
 
             $('.nextBtn').click(function(e) {
                 e.preventDefault();
+                $($(this).closest('.modal')[0]).modal('toggle');
                 var nextId = $(this).attr("data-id");
-                $(nextId).modal();
+                setTimeout(function(){
+                    $(nextId).modal();
+                }, 400);
             });
         });
     </script>
 @endsection
 
 @section('content')
-    <div class="container-fluid" id="about">
+    <div class="container-fluid page-title-container">
         <div class="row">
-            <div id="aboutHead" class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid">
                 <h1 style="color: white;">Ask Idea Sourcing</h1>
                 <p class="lead text-center">
                     <u>We provide affordable services to Amazon sellers that make sourcing from overseas comfortable and
@@ -261,9 +309,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Product Consultation</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -288,9 +339,8 @@
                                 payment, then start sourcing right away.
                             </p>
                         </div>
-
-                        <div style="position: absolute; bottom: 24px; right: 48px;">
-                            <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#supplierAssessment">Next</a>
+                        <div class="col-xs-12 text-right" style="height: 60px; position: relative">
+                            <a href="#" class="btn btn-default nextBtn" data-id="#supplierAssessment">Next</a>
                         </div>
                     </div>
                 </div>
@@ -304,9 +354,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Supplier Assessment</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -336,7 +389,7 @@
                             </p>
                         </div>
 
-                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                        <div class="col-xs-12 text-right" style="height: 60px; position: relative">
                             <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#sampling">Next</a>
                         </div>
                     </div>
@@ -351,9 +404,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Sampling</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -375,7 +431,7 @@
 
                         </div>
 
-                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                        <div class="col-xs-12 text-right" style="height: 60px; position: relative">
                             <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#industryRegulations">Next</a>
                         </div>
                     </div>
@@ -390,9 +446,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Industry Regulations</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -424,9 +483,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Inspection</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -444,7 +506,7 @@
 
                         </div>
 
-                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                        <div class="col-xs-12 text-right" style="height: 60px; position: relative">
                             <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#orderMonitoring">Next</a>
                         </div>
                     </div>
@@ -459,9 +521,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Price Negotiation</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -469,10 +534,18 @@
                 <div class="row desc-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 desc-container">
-
+                            <p>
+                                <strong>Price Negotiation: </strong>
+                                We have sourcing agents living in China and know the industry well.
+                                Our agent will try to negotiate the price with manufacturer on behalf of you.
+                                The goal is to get the lowest price for you without hurting the quality.
+                                Also, the price will be fair to the manufacturers so that you can maintain
+                                a good relationship with them. We will provide you with all information
+                                we have and try to keep the progress transparent and clear.
+                            </p>
                         </div>
 
-                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                        <div class="col-xs-12 text-right" style="height: 60px; position: relative">
                             <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#contractArrangement">Next</a>
                         </div>
                     </div>
@@ -487,9 +560,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Contract Arrangement</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -497,10 +573,18 @@
                 <div class="row desc-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 desc-container">
-
+                            <p>
+                                <strong>Contract Arrangement: </strong>
+                                It is critical to draft a contract that can protect your rights.
+                                We will make sure you contract with the right party.
+                                You should contract with a company that has sufficient financial resources
+                                when things go south. Also, we mainly focus on quality requirements and product warranty.
+                                These terms can set a clear standard for the inspection,
+                                and protect your right when things go wrong.
+                            </p>
                         </div>
 
-                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                        <div class="col-xs-12 text-right" style="height: 60px; position: relative">
                             <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#payment">Next</a>
                         </div>
                     </div>
@@ -515,9 +599,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Payment</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -548,9 +635,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Order Monitoring</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
@@ -570,7 +660,7 @@
 
                         </div>
 
-                        <div style="position: absolute; bottom: 24px; right: 48px;">
+                        <div class="col-xs-12 text-right" style="height: 60px; position: relative">
                             <a href="#" data-dismiss="modal" class="btn btn-default nextBtn" data-id="#logistics">Next</a>
                         </div>
                     </div>
@@ -585,9 +675,12 @@
                 <div class="row title-row">
                     <div class="col-xs-12">
                         <div class="col-xs-12 title-container" style="position:relative;">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="opacity: 0.6; text-shadow: none; margin-top: 8px;">
+                                <span aria-hidden="true" style="color: white;">&times;</span>
+                            </button>
                             <h2>Logistics</h2>
-                            <span style="position: absolute; height: 200px; top: 50px; right: 50px;">
-                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite" style="height: 100%; opacity: 0.2;">
+                            <span class="modal-logo">
+                                <img src="{{ asset('img/logo/SmallLogoWH.png') }}" alt="smallLogoWhite">
                             </span>
                         </div>
                     </div>
