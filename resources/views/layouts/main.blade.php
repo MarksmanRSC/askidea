@@ -93,31 +93,33 @@
 
 <footer>
     <div class="container" style="border-top: 1px solid #dddddd;"></div>
-    <div class="container" style="padding-top: 3em; padding-bottom: 1em">
-        <div class="col-md-4">
-            <ul>
-                <li><i class="fa fa-phone"></i> <a href="tel:1-513-285-8899">+1-513-285-8899</a></li>
-                <li>
-                    <i class="fa fa-map-marker"></i> 9900 Carver Rd, Suite 200,Cincinnati, OH 45242
-                </li>
-            </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-xs-6">
+                <ul>
+                    <li><i class="fa fa-phone"></i> <a href="tel:1-513-285-8899">+1-513-285-8899</a></li>
+                    <li>
+                        <i class="fa fa-map-marker"></i> 9900 Carver Rd, Suite 200,Cincinnati, OH 45242
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-xs-6">
+                <ul>
+                    <li><a href="/assets/Privacy_Policy.pdf">Privacy Policy</a></li>
+                    <li>
+                        Monday-Friday 9:00AM-5:00PM EST
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-xs-6">
+                <i class="fa fa-facebook-square fa-3x" style="color: #333;"></i>
+
+                <i class="fa fa-linkedin-square fa-3x" style="margin-left: 8px; color: #333;"></i>
+            </div>
+
         </div>
-
-        <div class="col-md-4">
-            <ul>
-                <li><a href="/assets/Privacy_Policy.pdf">Privacy Policy</a></li>
-                <li>
-                    Monday-Friday 9:00AM-5:00PM EST
-                </li>
-            </ul>
-        </div>
-
-        <div class="col-md-4">
-            <i class="fa fa-facebook-square fa-3x" style="color: #333;"></i>
-
-            <i class="fa fa-linkedin-square fa-3x" style="margin-left: 8px; color: #333;"></i>
-        </div>
-
     </div>
 </footer>
 

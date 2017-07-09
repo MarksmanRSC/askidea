@@ -47,21 +47,18 @@
                         </strong>
                     </div>
                     <div class="col-xs-12">
-                        <spam style="font-size: 14px; letter-spacing: 2px;">
-                            {{ date_format(date_create($blog->updated_at),"F j, Y") }}
-                        </spam>
-                    </div>
-                    <div class="col-xs-12">
-                        <div class="col-xs-12" style="margin-top: 24px;">
-                            <a href="{{ route('blog.show', $blog) }}">
-                                <img src="{{ route("image.show", ['filename' => $blog->cover_image]) }}"
-                                    alt="{{ $blog->cover_image }}" style="width: 100%; ">
-                            </a>
-                        </div>
-                        <div class="col-xs-12" style="margin-top: 16px;">
-                            <p style="font-size: 17px;">
-                                {{ $blog->content }}
-                            </p>
+                        <div class="row">
+                            <div class="col-xs-12" style="margin-top: 24px;">
+                                <a href="{{ route('blog.show', $blog) }}">
+                                    <img src="{{ route("image.show", ['filename' => $blog->cover_image]) }}"
+                                         alt="{{ $blog->cover_image }}" style="width: 100%; ">
+                                </a>
+                            </div>
+                            <div class="col-xs-12" style="margin-top: 16px;">
+                                <p style="font-size: 17px;">
+                                    {{ $blog->content }}
+                                </p>
+                            </div>
                         </div>
                     </div>
                     <div class="col-xs-12">
