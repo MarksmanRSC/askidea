@@ -17,7 +17,7 @@ class AdministratorMiddleware
     public function handle($request, Closure $next)
     {
         if(Auth::guest() || Auth::user()->role->name !== 'Administrator') {
-            return redirect('/');
+            return redirect(route('home.index'));
         }
         return $next($request);
     }

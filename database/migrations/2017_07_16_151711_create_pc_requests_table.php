@@ -1,11 +1,10 @@
 <?php
 
-use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class CreatePcRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,23 +13,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('pc_requests', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->unsignedInteger('role_id')->default(999);
-            $table->rememberToken();
+            $table->unsignedInteger('user_id');
+            $table->string('status')->default("Pending");
+
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->foreign('role_id')
-                ->references('id')->on('roles')
+            $table->foreign('user_id')
+                ->references('id')->on('users')
                 ->onUpdate('cascade')
-                ->onDelete('restrict');
+                ->onDelete('cascade');
         });
-
-        User::create(['name' => 'Mingchao Liao', 'email' => 'mingchaoliao95@gmail.com', 'password' => Hash::make('123456'), 'role_id' => 1]);
     }
 
     /**
@@ -40,6 +35,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('pc_requests');
     }
 }

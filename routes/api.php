@@ -13,6 +13,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::post('login', 'Auth\LoginController@apiLogin');
+
+Route::group(['middleware' => ['auth:api']], function () {
+    Route::get('amazon_item', 'Api\PcAmazonItemController@getItems');
+    Route::post('amazon_item', 'Api\PcAmazonItemController@addItem');
+    Route::delete('amazon_item/{id}', 'Api\PcAmazonItemController@deleteItem');
+});
+
+Route::group(['middleware' => ['auth:api', 'membership']], function () {
+    Route::get('pc_request', 'Api\PcRequestController@getSummary');
+    Route::get('pc_request/{id}', 'Api\PcRequestController@getDetail');
+    Route::get('pc_request_item/{id}', 'Api\PcRequestController@getItemDetail');
+    Route::post('pc_request', 'Api\PcRequestController@create');
 });

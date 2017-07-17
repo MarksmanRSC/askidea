@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
+            \Barryvdh\Cors\HandleCors::class,
             'throttle:60,1',
             'bindings',
         ],
@@ -58,5 +59,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         'administrator' => \App\Http\Middleware\AdministratorMiddleware::class,
+        'membership' => \App\Http\Middleware\MembershipMiddleware::class,
     ];
 }
