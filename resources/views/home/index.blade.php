@@ -148,7 +148,7 @@
     <div class="container" style="padding-top: 72px;">
         <div class="row page-desc-row">
             <div class="col-xs-12">
-                <h1>You China Connection</h1>
+                <h1>Your China Connection</h1>
                 <p>
                     Finding cost-effective and reliable product sources plays right into your
                     bottom line. But you don't feel equipped to work with suppliers from
