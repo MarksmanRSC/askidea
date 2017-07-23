@@ -16,13 +16,15 @@ use Illuminate\Http\Request;
 Route::post('login', 'Auth\LoginController@apiLogin');
 
 Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('amazon_item', 'Api\PcAmazonItemController@getItems');
-    Route::post('amazon_item', 'Api\PcAmazonItemController@addItem');
-    Route::delete('amazon_item/{id}', 'Api\PcAmazonItemController@deleteItem');
+    Route::get('pc_check_user_amazon_item/{asin}', 'Api\PcAmazonItemController@checkUserAmazonItem');
+    Route::get('pc_amazon_item', 'Api\PcAmazonItemController@getItems');
+    Route::post('pc_amazon_item', 'Api\PcAmazonItemController@addItem');
+    Route::delete('pc_amazon_item/{id}', 'Api\PcAmazonItemController@deleteItem');
 });
 
 Route::group(['middleware' => ['auth:api', 'membership']], function () {
-    Route::get('pc_request', 'Api\PcRequestController@getSummary');
+    Route::get('pc_result_summary', 'Api\PcRequestController@getResultSummary');
+    Route::get('pc_request', 'Api\PcRequestController@getRequestSummary');
     Route::get('pc_request/{id}', 'Api\PcRequestController@getDetail');
     Route::get('pc_request_item/{id}', 'Api\PcRequestController@getItemDetail');
     Route::post('pc_request', 'Api\PcRequestController@create');

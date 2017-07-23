@@ -21,7 +21,7 @@ class PcRequestController extends Controller
      * @return Json
      * @throws UnauthorizedHttpException
      */
-    public function getSummary() {
+    public function getRequestSummary() {
         $re = DB::select(DB::raw("
         select
           pc_requests.id as pc_request_id,
@@ -34,6 +34,34 @@ class PcRequestController extends Controller
         where pc_requests.user_id = ?
         group by pc_requests.id, pc_requests.status, pc_requests.created_at
         order by pc_requests.created_at desc
+        "), [Auth::user()->id]);
+
+        return response()->json($re);
+    }
+
+    /**
+     * Get summary of all results.
+     *
+     * @return Json
+     * @throws UnauthorizedHttpException
+     */
+    public function getResultSummary() {
+        $re = DB::select(DB::raw("
+        select
+          concat(SUBSTRING(pc_amazon_items.product_name, 1, 30), '...') as product_name,
+          pc_amazon_items.asin as asin,
+          pc_amazon_items.image_url as image_url,
+          pc_amazon_items.rank as rank,
+          pc_amazon_items.estimated_sales as estimated_sales,
+          pc_alibaba_items.max_roi as max_roi,
+          pc_alibaba_items.min_roi as min_roi,
+          pc_alibaba_items.moq as moq
+        from pc_request_user_amazon_items
+        join pc_user_amazon_items on pc_request_user_amazon_items.pc_user_amazon_item_id = pc_user_amazon_items.id
+        join pc_amazon_items on pc_amazon_items.id = pc_user_amazon_items.pc_amazon_item_id
+        left join pc_amazon_item_alibaba_items on pc_amazon_item_alibaba_items.pc_amazon_item_id = pc_amazon_items.id
+        left join pc_alibaba_items on pc_alibaba_items.id = pc_amazon_item_alibaba_items.pc_alibaba_item_id
+        where pc_user_amazon_items.user_id = ? and pc_request_user_amazon_items.status = 'Completed'
         "), [Auth::user()->id]);
 
         return response()->json($re);
