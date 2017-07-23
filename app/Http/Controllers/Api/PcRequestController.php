@@ -49,6 +49,8 @@ class PcRequestController extends Controller
         $re = DB::select(DB::raw("
         select
           concat(SUBSTRING(pc_amazon_items.product_name, 1, 30), '...') as product_name,
+          pc_user_amazon_items.id as pc_user_amazon_item_id,
+          pc_alibaba_items.id as pc_alibaba_item_id,
           pc_amazon_items.asin as asin,
           pc_amazon_items.image_url as image_url,
           pc_amazon_items.rank as rank,
@@ -130,6 +132,7 @@ class PcRequestController extends Controller
            pc_amazon_items.amazon_fee as amazon_fee,
            pc_amazon_items.number_of_review as number_of_review,
            pc_request_user_amazon_items.created_at as pc_request_created_at,
+           pc_alibaba_items.id as pc_alibaba_item_id,
            pc_alibaba_items.alibaba_url as alibaba_url,
            pc_alibaba_items.alibaba_price_max as alibaba_price_max,
            pc_alibaba_items.alibaba_price_min as alibaba_price_min,
@@ -188,6 +191,12 @@ class PcRequestController extends Controller
             return response()->json(['message' => 'unable to create quest'], 400);
         }
 
+        $pc_limit = Auth::user()->pc_limit;
+
+        if($pc_limit < count($data)) {
+            return response()->json(['message' => 'exceed limit'], 400);
+        }
+
         $payload = [];
 
         foreach ($data as $pcUserAmazonItemId) {
@@ -207,6 +216,14 @@ class PcRequestController extends Controller
             return response()->json(['message' => 'unable to create quest'], 400);
         }
 
-        return response()->json(['message' => 'ok', 'pc_request_id' => $pcRequest->id]);
+        $pc_limit -= count($data);
+
+        Auth::user()->update(['pc_limit' => $pc_limit]);
+
+        return response()->json([
+            'message' => 'ok',
+            'pc_request_id' => $pcRequest->id,
+            'pc_limit' => $pc_limit
+        ]);
     }
 }

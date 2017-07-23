@@ -23,7 +23,8 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-
+            $table->unsignedInteger('pc_limit')->default(0);
+            $table->dateTime('role_expired_at')->nullable();
             $table->foreign('role_id')
                 ->references('id')->on('roles')
                 ->onUpdate('cascade')

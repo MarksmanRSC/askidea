@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 Route::post('login', 'Auth\LoginController@apiLogin');
 
 Route::group(['middleware' => ['auth:api']], function () {
+    Route::get('user', 'Api\UserController@getUser');
     Route::get('pc_check_user_amazon_item/{asin}', 'Api\PcAmazonItemController@checkUserAmazonItem');
     Route::get('pc_amazon_item', 'Api\PcAmazonItemController@getItems');
     Route::post('pc_amazon_item', 'Api\PcAmazonItemController@addItem');
