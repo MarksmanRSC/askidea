@@ -116,10 +116,9 @@
                 <p>
                     You've laid the groundwork. Your business is humming. Now, it's time
                     to take it to the next level. <strong>Ask Idea</strong> is the
-                    valued partner that helps you scale up and increase your profit.
-                    Our product sourcing and logistics services ensure that you can
-                    deliver quality product while creating undeniable efficiencies
-                    that directly impact your growth.
+                    valued partner that helps you scale up and increase your profits.
+                    By leveraging our product sourcing and logistics services you can
+                    deliver quality products efficiently and watch your business grow.
                 </p>
             </div>
         </div>
