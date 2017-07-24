@@ -1,3 +1,9 @@
+##
+# Added by Jason on July 24, 2017 to fix broken search listings
+Redirect "/about-us" "/about_us"
+Redirect "/services" "/service"
+Redirect "/service/sourcing" "/service"
+
 # Apache Server Configs v2.14.0 | MIT License
 # https://github.com/h5bp/server-configs-apache
 
@@ -340,7 +346,10 @@ AddDefaultCharset utf-8
     RewriteCond %{HTTPS} !=on
     RewriteRule ^ - [env=proto:http]
 
+
+
 </IfModule>
+
 
 # ----------------------------------------------------------------------
 # | Forcing `https://`                                                 |
@@ -993,8 +1002,11 @@ RewriteEngine On
 # Redirect Trailing Slashes...
 RewriteRule ^(.*)/$ /$1 [L,R=301]
 
+
 # Handle Front Controller...
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.php [L]
+
+
 </IfModule>
