@@ -1,10 +1,11 @@
 <?php
 
+use App\PcAmazonItem;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBlogsTable extends Migration
+class CreatePcAmazonItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,28 +14,28 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
+        Schema::create('pc_amazon_items', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->unsignedInteger('create_user_id');
-            $table->unsignedInteger('update_user_id');
-            $table->string('title');
-            $table->string('cover_image');
-            $table->longText('content');
+            $table->string('asin')->unique();
+            $table->string('image_url', 300);
+            $table->string('product_name', 500);
+            $table->float('list_price')->nullable();
+            $table->integer('rank')->nullable();
+            $table->integer('estimated_sales')->nullable();
+            $table->float('amazon_fee')->nullable();
+            $table->float('number_of_review')->nullable();
+
+            $table->unsignedInteger('update_user_id')->nullable();
 
             $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
-
-            $table->foreign('create_user_id')
-                ->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
 
             $table->foreign('update_user_id')
                 ->references('id')->on('users')
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
-        });
 
+        });
     }
 
     /**
@@ -44,6 +45,6 @@ class CreateBlogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::dropIfExists('pc_amazon_items');
     }
 }

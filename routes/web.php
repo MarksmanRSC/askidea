@@ -10,8 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::get('/image/{filename}', 'ImageController@show')->name('image.show');
 
 Auth::routes();

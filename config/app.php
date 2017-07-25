@@ -181,6 +181,8 @@ return [
         Intervention\Image\ImageServiceProvider::class,                          // intervention/image
         Spatie\UrlSigner\Laravel\UrlSignerServiceProvider::class,                // spatie/laravel-url-signer
         Collective\Html\HtmlServiceProvider::class,                              // laravelcollective/html
+        Laravel\Passport\PassportServiceProvider::class,                         // laravel/passport
+        Barryvdh\Cors\ServiceProvider::class,                                    // barryvdh/laravel-cors
 
     ],
 

@@ -26,6 +26,11 @@ class BlogController extends Controller
             $blog->content = $content;
         }
 
+        if(!Auth::guest()) {
+            echo Auth::user()->createToken('Token Name')->accessToken;
+            die();
+        }
+
         return view('blog.index', ['blogs' => $blogs]);
     }
 
@@ -57,7 +62,8 @@ class BlogController extends Controller
             'title' => $title,
             'cover_image' => $cover_image,
             'content' => $content,
-            'user_id' => Auth::user()->id
+            'create_user_id' => Auth::user()->id,
+            'update_user_id' => Auth::user()->id
         ]);
 
         return redirect(route('blog.index'));
@@ -109,7 +115,7 @@ class BlogController extends Controller
             'title' => $title,
             'cover_image' => $cover_image,
             'content' => $content,
-            'user_id' => Auth::user()->id
+            'update_user_id' => Auth::user()->id
         ]);
 
         return redirect(route('blog.index'));
