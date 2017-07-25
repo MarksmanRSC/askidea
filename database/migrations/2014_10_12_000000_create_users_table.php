@@ -30,8 +30,6 @@ class CreateUsersTable extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('restrict');
         });
-
-        User::create(['name' => 'Mingchao Liao', 'email' => 'mingchaoliao95@gmail.com', 'password' => Hash::make('123456'), 'role_id' => 1]);
     }
 
     /**

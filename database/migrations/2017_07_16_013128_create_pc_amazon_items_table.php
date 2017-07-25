@@ -36,19 +36,6 @@ class CreatePcAmazonItemsTable extends Migration
                 ->onDelete('restrict');
 
         });
-
-        PcAmazonItem::insert([
-            ['asin' => 'B00U3FPN4U', 'product_name' => 'Amazon Fire TV | Streaming Media Player'],
-            ['asin' => 'B000JE9LD4', 'product_name' => 'Belkin 12-Outlet Pivot-Plug Power Strip Surge Protector with 8-Foot Power Cord, 4320 Joules (BP112230-08)'],
-            ['asin' => 'B01M1L7V6P', 'product_name' => 'PUMA Men\'s Suede Classic + Fashion Sneaker'],
-            ['asin' => 'B00ZQDXQX4', 'product_name' => 'DYNAREX Gauze Sponge 100% Cotton 8-ply 2 x 2" Square (#3222, Sold Per Box)'],
-            ['asin' => 'B01DLDD98M', 'product_name' => 'Niangua Furniture Live Edge Hickory Rustic Coffee Table with Copper Pipe Legs - 48" x 23"'],
-            ['asin' => 'B017JGIRW0', 'product_name' => 'Pint Glasses - Rustic Moose Beer - Set of Two. Screen Printed Pint Glasses'],
-            ['asin' => 'B01L4YK0AA', 'product_name' => 'Deer Throw Pillow - USA Organic Cotton - Sleeping Fawn - Animal Plush - Mocha Brown - Hand-printed Decorative Pillow - Throw Pillow - Woodland Decor - Handmade Cushion - Eco-Friendly'],
-            ['asin' => 'B00QW8TYWO', 'product_name' => 'Crossy Road'],
-            ['asin' => 'B0051Y1HT8', 'product_name' => 'Mickey Thompson Baja MTZ All-Terrain Radial Tire - LT315/70R17 121Q'],
-            ['asin' => 'B00JKS42ZW', 'Christine McGinnis'],
-        ]);
     }
 
     /**

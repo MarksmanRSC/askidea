@@ -1,3 +1,9 @@
+##
+# Added by Jason on July 24, 2017 to fix broken search listings
+Redirect "/about-us" "/about_us"
+Redirect "/services" "/service"
+Redirect "/service/sourcing" "/service"
+
 # Apache Server Configs v2.14.0 | MIT License
 # https://github.com/h5bp/server-configs-apache
 
