@@ -54,9 +54,12 @@ class PcRequestController extends Controller
           pc_amazon_items.asin as asin,
           pc_amazon_items.image_url as image_url,
           pc_amazon_items.rank as rank,
+          pc_amazon_items.list_price as list_price,
+          pc_amazon_items.amazon_fee as amazon_fee,
+          pc_alibaba_items.alibaba_price_max as alibaba_price_max,
+          pc_alibaba_items.alibaba_price_min as alibaba_price_min,
+          pc_alibaba_items.weight as weight,
           pc_amazon_items.estimated_sales as estimated_sales,
-          pc_alibaba_items.max_roi as max_roi,
-          pc_alibaba_items.min_roi as min_roi,
           pc_alibaba_items.moq as moq
         from pc_request_user_amazon_items
         join pc_user_amazon_items on pc_request_user_amazon_items.pc_user_amazon_item_id = pc_user_amazon_items.id
@@ -84,7 +87,6 @@ class PcRequestController extends Controller
         select
            pc_requests.id as pc_request_id,
            pc_request_user_amazon_items.pc_user_amazon_item_id as pc_request_item_id,
-           pc_requests.created_at as pc_request_created_at,
            pc_request_user_amazon_items.status as status,
            pc_amazon_items.asin as asin,
            pc_amazon_items.image_url as image_url,
@@ -131,23 +133,14 @@ class PcRequestController extends Controller
            pc_amazon_items.estimated_sales as estimated_sales,
            pc_amazon_items.amazon_fee as amazon_fee,
            pc_amazon_items.number_of_review as number_of_review,
-           pc_request_user_amazon_items.created_at as pc_request_created_at,
            pc_alibaba_items.id as pc_alibaba_item_id,
            pc_alibaba_items.alibaba_url as alibaba_url,
            pc_alibaba_items.alibaba_price_max as alibaba_price_max,
            pc_alibaba_items.alibaba_price_min as alibaba_price_min,
-           pc_alibaba_items.length as length,
-           pc_alibaba_items.width as width,
-           pc_alibaba_items.height as height,
            pc_alibaba_items.weight as weight,
            pc_alibaba_items.moq as moq,
            pc_alibaba_items.lead_time as lead_time,
-           pc_alibaba_items.estimated_fba_cost_by_air as estimated_fba_cost_by_air,
-           pc_alibaba_items.estimated_fba_cost_by_lcl as estimated_fba_cost_by_lcl,
-           pc_alibaba_items.max_roi as max_roi,
-           pc_alibaba_items.min_roi as min_roi,
-           pc_amazon_item_alibaba_items.similarity as similarity,
-           pc_amazon_item_alibaba_items.potential_opportunity as potential_opportunity
+           pc_amazon_item_alibaba_items.similarity as similarity
         from pc_user_amazon_items
         join pc_request_user_amazon_items on pc_request_user_amazon_items.pc_user_amazon_item_id = pc_user_amazon_items.id
         join pc_amazon_items on pc_amazon_items.id = pc_amazon_item_id

@@ -11,19 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class PcAmazonItemController extends Controller
 {
-    /*
-     *
-     * select
-           amazon_url, asin, list_price, rank, estimated_sales, amazon_fee, number_of_review,
-           alibaba_url, alibaba_price_max, alibaba_price_min, length, width, height, weight, moq,
-           lead_time, similarity, estimated_fba_cost_by_air, estimated_fba_cost_by_lcl, max_roi, min_roi,
-           potential_opportunity
-        from amazon_items
-        join user_amazon_items on user_amazon_items.amazon_item_id = amazon_items.id
-        join user on user_amazon_items.user_id = user.id
-        left join alibaba_items on alibaba_items.amazon_item_id = amazon_items.id
-        where user.id = ?
-     * */
     public function getItems() {
         $re = DB::select(DB::raw("
         select 
