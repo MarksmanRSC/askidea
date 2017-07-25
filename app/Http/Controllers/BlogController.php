@@ -26,11 +26,6 @@ class BlogController extends Controller
             $blog->content = $content;
         }
 
-        if(!Auth::guest()) {
-            echo Auth::user()->createToken('Token Name')->accessToken;
-            die();
-        }
-
         return view('blog.index', ['blogs' => $blogs]);
     }
 
