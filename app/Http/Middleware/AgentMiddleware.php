@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class AdministratorMiddleware
+class AgentMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class AdministratorMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guest() || !Auth::user()->isAdmin()) {
+        if(Auth::guest() || !Auth::user()->isAgent()) {
             return redirect(route('home.index'));
         }
         return $next($request);

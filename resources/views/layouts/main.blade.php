@@ -16,9 +16,8 @@
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i"
           rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.15/css/theme.bootstrap_3.min.css" />
     <link rel="stylesheet" href="/css/assets.css?v=1.0.1">
-
     @yield('css')
 </head>
 
@@ -69,6 +68,13 @@
                         </a>
 
                         <ul class="dropdown-menu" role="menu">
+                            @if(Auth::user()->isAgent())
+                                <li><a href="{{ route('pc_agent.home') }}">APC Agent System</a></li>
+                            @endif
+                            @if(Auth::user()->isAdmin())
+                                <li><a href="{{ route('user.index') }}">User Management</a></li>
+                            @endif
+                            <li><a href="{{ route('promo_code.index') }}">Promo Code</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
@@ -129,6 +135,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="/js/jquery.ajax-cross-origin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.15/js/jquery.tablesorter.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.15/js/jquery.tablesorter.widgets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.28.15/js/extras/jquery.tablesorter.pager.min.js"></script>
 
 <script>
     $(document).ready(function () {

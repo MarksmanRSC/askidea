@@ -33,6 +33,20 @@ class User extends Authenticatable
     }
 
     public function isAdmin() {
-        return $this->role->name === 'Administrator';
+        return $this->role->id === 1;
+    }
+
+    public function isAgent() {
+        if($this->isAdmin()) {
+            return true;
+        }
+        return $this->role->id === 2;
+    }
+
+    public function isMembership() {
+        if($this->isAdmin()) {
+            return true;
+        }
+        return in_array($this->role->id, [3, 4]);
     }
 }

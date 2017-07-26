@@ -1,13 +1,13 @@
 <?php
 
-use App\Role;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRolesTable extends Migration
+class CreatePromoCodeTypesTable extends Migration
 {
-    public $tableName = 'roles';
+
+    public $tableName = 'promo_code_types';
 
     /**
      * Run the migrations.
@@ -20,18 +20,27 @@ class CreateRolesTable extends Migration
             Schema::disableForeignKeyConstraints();
             Schema::create($this->tableName, function (Blueprint $table) {
                 $table->increments('id')->unsigned();
-                $table->string('name')->unique();
+
+                $table->string('description');
+                $table->json('definition');
+
+                $table->unsignedInteger('create_user_id');
+                $table->unsignedInteger('update_user_id');
                 $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
                 $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+
+                $table->foreign('create_user_id')
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('restrict');
+
+                $table->foreign('update_user_id')
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('restrict');
             });
             Schema::enableForeignKeyConstraints();
         }
-
-        Role::create(['name' => 'Administrator', 'id' => 1]);
-        Role::create(['name' => 'Agent', 'id' => 2]);
-        Role::create(['name' => 'Gold Member', 'id' => 3]);
-        Role::create(['name' => 'Silver Member', 'id' => 4]);
-        Role::create(['name' => 'Normal Member', 'id' => 999]);
     }
 
     /**

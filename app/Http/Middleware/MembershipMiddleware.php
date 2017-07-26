@@ -16,7 +16,7 @@ class MembershipMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::guest() || Auth::user()->role->id == 999) {
+        if(Auth::guest() || !Auth::user()->isMembership()) {
             return redirect(route('home.index'));
         }
         return $next($request);
