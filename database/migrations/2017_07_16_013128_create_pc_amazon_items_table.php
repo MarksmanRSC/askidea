@@ -7,6 +7,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePcAmazonItemsTable extends Migration
 {
+    public $tableName = 'pc_amazon_items';
+
     /**
      * Run the migrations.
      *
@@ -14,28 +16,32 @@ class CreatePcAmazonItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pc_amazon_items', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->string('asin')->unique();
-            $table->string('image_url', 300);
-            $table->string('product_name', 500);
-            $table->float('list_price')->nullable();
-            $table->integer('rank')->nullable();
-            $table->integer('estimated_sales')->nullable();
-            $table->float('amazon_fee')->nullable();
-            $table->float('number_of_review')->nullable();
+        if (!Schema::hasTable($this->tableName)) {
+            Schema::disableForeignKeyConstraints();
+            Schema::create($this->tableName, function (Blueprint $table) {
+                $table->increments('id')->unsigned();
+                $table->string('asin')->unique();
+                $table->string('image_url', 300);
+                $table->string('product_name', 500);
+                $table->float('list_price')->nullable();
+                $table->integer('rank')->nullable();
+                $table->integer('estimated_sales')->nullable();
+                $table->float('amazon_fee')->nullable();
+                $table->float('number_of_review')->nullable();
 
-            $table->unsignedInteger('update_user_id')->nullable();
+                $table->unsignedInteger('update_user_id')->nullable();
 
-            $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+                $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+                $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->foreign('update_user_id')
-                ->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('restrict');
+                $table->foreign('update_user_id')
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('restrict');
 
-        });
+            });
+            Schema::enableForeignKeyConstraints();
+        }
     }
 
     /**
@@ -45,6 +51,6 @@ class CreatePcAmazonItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pc_amazon_items');
+        Schema::dropIfExists($this->tableName);
     }
 }

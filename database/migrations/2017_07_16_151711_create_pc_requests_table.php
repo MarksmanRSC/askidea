@@ -6,6 +6,8 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePcRequestsTable extends Migration
 {
+    public $tableName = 'pc_requests';
+
     /**
      * Run the migrations.
      *
@@ -13,19 +15,35 @@ class CreatePcRequestsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pc_requests', function (Blueprint $table) {
-            $table->increments('id')->unsigned();
-            $table->unsignedInteger('user_id');
-            $table->string('status')->default("Pending");
+        if (!Schema::hasTable($this->tableName)) {
+            Schema::disableForeignKeyConstraints();
+            Schema::create($this->tableName, function (Blueprint $table) {
+                $table->increments('id')->unsigned();
+                $table->unsignedInteger('user_id');
+                $table->string('status')->default("Pending");
 
-            $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
+                $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
+                $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-            $table->foreign('user_id')
-                ->references('id')->on('users')
-                ->onUpdate('cascade')
-                ->onDelete('cascade');
-        });
+                $table->foreign('user_id')
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            });
+            Schema::enableForeignKeyConstraints();
+        }
+
+        if (!Schema::hasColumn($this->tableName, 'agent_user_id')) {
+            Schema::table($this->tableName, function (Blueprint $table)
+            {
+                $table->unsignedInteger('agent_user_id')->nullable();
+
+                $table->foreign('agent_user_id')
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            });
+        }
     }
 
     /**
@@ -35,6 +53,6 @@ class CreatePcRequestsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pc_requests');
+        Schema::dropIfExists($this->tableName);
     }
 }

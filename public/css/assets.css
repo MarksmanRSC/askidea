@@ -13,8 +13,24 @@ body > .container {
     padding: 90px 15px 32px;
 }
 
-h1, h2, h3, h4, h5, p {
+h1, h2, h3, h4, h5, p, th, td {
     color: #fff;
+}
+
+.background-white {
+    background: white;
+    min-height: calc(100vh - 132px);
+}
+
+.background-white h1,
+.background-white h2,
+.background-white h3,
+.background-white h4,
+.background-white h5,
+.background-white p,
+.background-white th,
+.background-white td {
+    color: black;
 }
 
 .navbar {
