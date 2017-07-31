@@ -59,16 +59,17 @@ class PcAgentController extends Controller
     }
 
     public function getAmazon($request_id, $amazon_item_id) {
-        PcRequest::findOrFail($request_id)->update(['status' => DB::raw("if(status = 'Pending', 'In Progress', if(status = 'Completed', 'Modifying', status))")]);
+        $request = PcRequest::findOrFail($request_id);
+        $request->update(['status' => DB::raw("if(status = 'Pending', 'In Progress', if(status = 'Completed', 'Modifying', status))")]);
         DB::update(DB::raw("
         update pc_request_user_amazon_items
         set status = if(status = 'Pending', 'In Progress', if(status = 'Completed', 'Modifying', status))
         where pc_request_id = ? and pc_user_amazon_item_id = (select id from pc_user_amazon_items where pc_amazon_item_id = ? and user_id = ?)
-        "), [$request_id, $amazon_item_id, Auth::user()->id]);
+        "), [$request_id, $amazon_item_id, $request->user_id]);
         $userRequestAmazonItem = DB::select(DB::raw("
         select * from pc_request_user_amazon_items
         where pc_request_id = ? and pc_user_amazon_item_id = (select id from pc_user_amazon_items where pc_amazon_item_id = ? and user_id = ?) 
-        "), [$request_id, $amazon_item_id, Auth::user()->id]);
+        "), [$request_id, $amazon_item_id, $request->user_id]);
         if(!$userRequestAmazonItem) {
             throw new \Exception("Item Not Found");
         }
@@ -77,10 +78,11 @@ class PcAgentController extends Controller
     }
 
     public function viewAmazon($request_id, $amazon_item_id) {
+        $request = PcRequest::findOrFail($request_id);
         $userRequestAmazonItem = DB::select(DB::raw("
         select * from pc_request_user_amazon_items
         where pc_request_id = ? and pc_user_amazon_item_id = (select id from pc_user_amazon_items where pc_amazon_item_id = ? and user_id = ?) 
-        "), [$request_id, $amazon_item_id, Auth::user()->id]);
+        "), [$request_id, $amazon_item_id, $request->user_id]);
         if(!$userRequestAmazonItem) {
             throw new \Exception("Item Not Found");
         }
@@ -108,11 +110,13 @@ class PcAgentController extends Controller
     }
 
     public function markAmazonCompleted($request_id, $amazon_item_id) {
+        $request = PcRequest::findOrFail($request_id);
+
         DB::update(DB::raw("
         update pc_request_user_amazon_items
         set status = 'Completed'
         where pc_request_id = ? and pc_user_amazon_item_id = (select id from pc_user_amazon_items where pc_amazon_item_id = ? and user_id = ?)
-        "), [$request_id, $amazon_item_id, Auth::user()->id]);
+        "), [$request_id, $amazon_item_id, $request->user_id]);
 
         DB::update(DB::raw("
         update pc_requests
@@ -187,7 +191,7 @@ class PcAgentController extends Controller
             'create_user_id' => Auth::user()->id,
             'update_user_id' => Auth::user()->id,
         ]);
-        DB::update(DB::raw("
+        DB::insert(DB::raw("
         insert into pc_amazon_item_alibaba_items(pc_amazon_item_id, pc_alibaba_item_id, similarity, potential_opportunity, create_user_id, update_user_id) 
         values (?, ?, ?, ?, ?, ?);
         "), [$amazon_item_id, $alibabaItem->id, Input::get('similarity'), Input::get('potential_opportunity'), Auth::user()->id, Auth::user()->id]);

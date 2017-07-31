@@ -32,18 +32,6 @@ class CreatePcRequestsTable extends Migration
             });
             Schema::enableForeignKeyConstraints();
         }
-
-        if (!Schema::hasColumn($this->tableName, 'agent_user_id')) {
-            Schema::table($this->tableName, function (Blueprint $table)
-            {
-                $table->unsignedInteger('agent_user_id')->nullable();
-
-                $table->foreign('agent_user_id')
-                    ->references('id')->on('users')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
-            });
-        }
     }
 
     /**
