@@ -41,9 +41,19 @@ Route::group(['middleware' => ['auth', 'administrator']], function () {
 
 Route::group(['middleware' => ['auth', 'agent']], function () {
     Route::get('/pc_agent/home', 'PcAgentController@home')->name('pc_agent.home');
-    Route::get('/pc_agent/request/{id}', 'PcAgentController@getRequest')->name('pc_agent.request');
-    Route::get('/pc_agent/amazon/{id}', 'PcAgentController@getAmazon')->name('pc_agent.amazon');
-    Route::put('/pc_agent/amazon/{id}', 'PcAgentController@updateAmazon')->name('pc_agent.amazon_update');
+    Route::get('/pc_agent/request/{request_id}', 'PcAgentController@getRequest')->name('pc_agent.request');
+    Route::get('/pc_agent/request/{request_id}/amazon/{amazon_item_id}', 'PcAgentController@getAmazon')->name('pc_agent.amazon');
+    Route::get('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/view', 'PcAgentController@viewAmazon')->name('pc_agent.amazon_view');
+    Route::get('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/completed', 'PcAgentController@markAmazonCompleted')->name('pc_agent.amazon_mark_completed');
+    Route::put('/pc_agent/request/{request_id}/amazon/{amazon_item_id}', 'PcAgentController@updateAmazon')->name('pc_agent.amazon_update');
+    Route::get('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/alibaba/create', 'PcAgentController@createAlibabaItem')->name('pc_agent.create_alibaba');
+    Route::get('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/alibaba/link', 'PcAgentController@getLinkAlibabaItem')->name('pc_agent.get_link_alibaba');
+    Route::post('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/alibaba/link', 'PcAgentController@storeLinkAlibabaItem')->name('pc_agent.store_link_alibaba');
+    Route::post('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/alibaba', 'PcAgentController@storeAlibabaItem')->name('pc_agent.store_alibaba');
+    Route::get('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/alibaba/{alibaba_item_id}/edit', 'PcAgentController@editAlibabaItem')->name('pc_agent.edit_alibaba');
+    Route::put('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/alibaba/{alibaba_item_id}', 'PcAgentController@updateAlibabaItem')->name('pc_agent.update_alibaba');
+    Route::get('/pc_agent/request/{request_id}/amazon/{amazon_item_id}/alibaba/{alibaba_item_id}/delete', 'PcAgentController@deleteAlibabaItem')->name('pc_agent.delete_alibaba');
+
 });
 
 Route::get('/blog/{blog}', 'BlogController@show')->name('blog.show'); // Display the specified blog.

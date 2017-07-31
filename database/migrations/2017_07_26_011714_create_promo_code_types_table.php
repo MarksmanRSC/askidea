@@ -22,7 +22,8 @@ class CreatePromoCodeTypesTable extends Migration
                 $table->increments('id')->unsigned();
 
                 $table->string('description');
-                $table->json('definition');
+                $table->json('definition')->nullable();
+                $table->text('success_message');
 
                 $table->unsignedInteger('create_user_id');
                 $table->unsignedInteger('update_user_id');

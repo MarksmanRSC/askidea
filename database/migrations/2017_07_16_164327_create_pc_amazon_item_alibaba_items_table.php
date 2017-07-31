@@ -33,7 +33,7 @@ class CreatePcAmazonItemAlibabaItemsTable extends Migration
                 $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
                 $table->dateTime('updated_at')->default(DB::raw('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'));
 
-                $table->index(['pc_amazon_item_id', 'pc_alibaba_item_id'], 'pc_amazon_item_alibaba_items_index');
+                $table->unique(['pc_amazon_item_id', 'pc_alibaba_item_id'], 'pc_amazon_item_alibaba_items_index');
 
                 $table->foreign('pc_amazon_item_id')
                     ->references('id')->on('pc_amazon_items')

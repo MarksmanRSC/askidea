@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\PromoCode;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,7 +17,18 @@ class PromoCodeController extends Controller
      */
     public function index()
     {
-        return view('promo_code.index');
+        $userPromoCodes = DB::select(DB::raw("
+        select 
+           user_promo_codes.created_at as created_at,
+           promo_code_types.description as description
+        from user_promo_codes
+        join promo_codes on user_promo_codes.promo_code_id = promo_codes.id
+        join promo_code_types on promo_code_types.id = promo_codes.promo_code_type_id
+        where user_promo_codes.user_id = ?
+        order by user_promo_codes.created_at desc
+        "), [Auth::user()->id]);
+
+        return view('promo_code.index', ['userPromoCodes' => $userPromoCodes]);
     }
 
     public function redeem(Request $request)
@@ -27,7 +39,8 @@ class PromoCodeController extends Controller
 
         $promoCode = $request->all()['promo_code'];
 
-        $re = PromoCode::where('promo_code', $promoCode)->get();
+        $re = PromoCode::join('promo_code_types', 'promo_code_type_id', '=', 'promo_code_types.id')
+            ->where('promo_code', $promoCode)->get();
 
         if(count($re) === 0) {
             return redirect()->back()->withInput()->withErrors(['promo_code' => 'Invalid Promo Code']);
@@ -37,21 +50,50 @@ class PromoCodeController extends Controller
 
         $remaining_quantity = $re->remaining_quantity;
 
-        if($remaining_quantity <= 0) {
-            return redirect()->back()->withInput()->withErrors(['promo_code' => 'Invalid Promo Code']);
+        if($remaining_quantity && $remaining_quantity <= 0) {
+            return redirect()->back()->withInput()->withErrors(['promo_code' => 'This promo code is expired']);
         }
+
+        if(!$re->is_resuable) {
+            $userPromoCodes = DB::select(DB::raw("
+            select * from user_promo_codes
+            where user_id = ?
+            and promo_code_id = ?
+            "), [Auth::user()->id, $re->id]);
+            if(count($userPromoCodes)) {
+                return redirect()->back()->withInput()->withErrors(['promo_code' => 'You have already used this code']);
+            }
+        }
+
         $this->processPromoCode($re->promo_code_type_id, Auth::user()->id);
-        PromoCode::find($re->id)->update([
-            'remaining_quantity' => $remaining_quantity - 1
-        ]);
+
+        if($remaining_quantity) {
+            PromoCode::find($re->id)->update([
+                'remaining_quantity' => $remaining_quantity - 1
+            ]);
+        }
+
         DB::insert(DB::raw("
-        insert into user_promo_code(user_id, promo_code_id) values(?, ?)
+        insert into user_promo_codes(user_id, promo_code_id) values(?, ?)
         "), [Auth::user()->id, $re->id]);
-        return redirect()->back()->withInput()->withErrors(['promo_code' => 'Redeem Successfully']);
+
+        return redirect(route('promo_code.index'))->withErrors(['promo_code' => $re->success_message]);
     }
 
     private function processPromoCode($typeId, $userId) {
-
+        if($typeId === 1) { // grant sliver membership, increase limit: 30
+            if(Auth::user()->role->id === 999) {
+                Auth::user()->update([
+                    'role_id' => 4,
+                    'role_expired_at' => Carbon::now()->addYear(1),
+                    'pc_limit' => Auth::user()->pc_limit + 30
+                ]);
+            } else {
+                Auth::user()->update([
+                    'pc_limit' => Auth::user()->pc_limit + 30
+                ]);
+            }
+        }
     }
 
     /**
