@@ -80,7 +80,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-3">
-                    {{Form::label('list_price', 'list_price')}}
+                    {{Form::label('list_price', 'List Price ($)')}}
                     {{Form::text('list_price', $amazon->list_price, ['class' => 'form-control'])}}
                     @if ($errors->has('list_price'))
                         <span style="color: red;">
@@ -98,7 +98,7 @@
                     @endif
                 </div>
                 <div class="col-xs-3">
-                    {{Form::label('estimated_sales', 'Estimated Sales')}}
+                    {{Form::label('estimated_sales', 'Estimated Sales (Units)')}}
                     {{Form::text('estimated_sales', $amazon->estimated_sales, ['class' => 'form-control'])}}
                     @if ($errors->has('estimated_sales'))
                         <span style="color: red;">
@@ -107,7 +107,7 @@
                     @endif
                 </div>
                 <div class="col-xs-3">
-                    {{Form::label('amazon_fee', 'Amazon Fee')}}
+                    {{Form::label('amazon_fee', 'Total FBA Fee ($)')}}
                     {{Form::text('amazon_fee', $amazon->amazon_fee, ['class' => 'form-control'])}}
                     @if ($errors->has('amazon_fee'))
                         <span style="color: red;">
@@ -156,15 +156,15 @@
                         <th>Action</th>
                         @endif
                         <th>URL</th>
-                        <th>Price (Max)</th>
-                        <th>Price (Min)</th>
-                        <th>Length</th>
-                        <th>Width</th>
-                        <th>Height</th>
-                        <th>Weight</th>
+                        <th>Price Max ($)</th>
+                        <th>Price Min ($)</th>
+                        {{--<th>Length</th>--}}
+                        {{--<th>Width</th>--}}
+                        {{--<th>Height</th>--}}
+                        <th>Weight (KG)</th>
                         <th>MOQ</th>
-                        <th>Lead Time</th>
-                        <th>Estimated FBA Cost By Local</th>
+                        <th>Lead Time (Days)</th>
+                        {{--<th>Estimated FBA Cost By Local</th>--}}
                         <th>Similarity</th>
                         <th>Potential Opportunity</th>
                         <th>Created At</th>
@@ -189,13 +189,13 @@
                             </td>
                             <td>{{ $alibabaItem->alibaba_price_max }}</td>
                             <td>{{ $alibabaItem->alibaba_price_min }}</td>
-                            <td>{{ $alibabaItem->length }}</td>
-                            <td>{{ $alibabaItem->width }}</td>
-                            <td>{{ $alibabaItem->height }}</td>
+                            {{--<td>{{ $alibabaItem->length }}</td>--}}
+                            {{--<td>{{ $alibabaItem->width }}</td>--}}
+                            {{--<td>{{ $alibabaItem->height }}</td>--}}
                             <td>{{ $alibabaItem->weight }}</td>
                             <td>{{ $alibabaItem->moq }}</td>
                             <td>{{ $alibabaItem->lead_time }}</td>
-                            <td>{{ $alibabaItem->estimated_fba_cost_by_lcl }}</td>
+                            {{--<td>{{ $alibabaItem->estimated_fba_cost_by_lcl }}</td>--}}
                             <td>{{ $alibabaItem->similarity }}</td>
                             <td>{{ $alibabaItem->potential_opportunity }}</td>
                             <td>{{ $alibabaItem->created_at }}</td>
