@@ -204,7 +204,7 @@
                         </div>
                     </div>
                     <div class="price">
-                        $99 <span style="font-size: 20px;">for the base price</span>
+                        <span style="font-size: 20px;">Starting at</span> $99
                     </div>
                     <p>
                         <a href="{{ url('/service#stage1') }}" class="btn btn-primary">Learn More</a>
@@ -247,7 +247,7 @@
                         </div>
                     </div>
                     <div class="price">
-                        $150 <span style="font-size: 20px;">for the base price</span>
+                        <span style="font-size: 20px;">Starting at</span> $150
                     </div>
                     <p>
                         <a href="{{ url('/service#stage2') }}" class="btn btn-primary">Learn More</a>
@@ -291,7 +291,7 @@
                         </div>
                     </div>
                     <div class="price">
-                        $200 <span style="font-size: 20px;">for the base price</span>
+                        <span style="font-size: 20px;">Starting at</span> $200
                     </div>
                     <p>
                         <a href="{{ url('/service#stage3') }}" class="btn btn-primary">Learn More</a>

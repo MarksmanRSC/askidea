@@ -38,7 +38,7 @@
                 @endif
             </div>
             <div class="col-xs-6">
-                {{Form::label('alibaba_price_max', 'Price (max)')}}
+                {{Form::label('alibaba_price_max', 'Price Max ($)')}}
                 {{Form::text('alibaba_price_max', '', ['class' => 'form-control'])}}
                 @if ($errors->has('alibaba_price_max'))
                     <span style="color: red;">
@@ -47,7 +47,7 @@
                 @endif
             </div>
             <div class="col-xs-6">
-                {{Form::label('alibaba_price_min', 'Price (min)')}}
+                {{Form::label('alibaba_price_min', 'Price Min ($)')}}
                 {{Form::text('alibaba_price_min', '', ['class' => 'form-control'])}}
                 @if ($errors->has('alibaba_price_min'))
                     <span style="color: red;">
@@ -55,35 +55,35 @@
                     </span>
                 @endif
             </div>
+            {{--<div class="col-xs-6">--}}
+                {{--{{Form::label('length', 'Length')}}--}}
+                {{--{{Form::text('length', '', ['class' => 'form-control'])}}--}}
+                {{--@if ($errors->has('length'))--}}
+                    {{--<span style="color: red;">--}}
+                        {{--<strong style="color: red;">{!! $errors->first('length') !!}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</div>--}}
+            {{--<div class="col-xs-6">--}}
+                {{--{{Form::label('width', 'Width')}}--}}
+                {{--{{Form::text('width', '', ['class' => 'form-control'])}}--}}
+                {{--@if ($errors->has('width'))--}}
+                    {{--<span style="color: red;">--}}
+                        {{--<strong style="color: red;">{!! $errors->first('width') !!}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</div>--}}
+            {{--<div class="col-xs-6">--}}
+                {{--{{Form::label('height', 'Height')}}--}}
+                {{--{{Form::text('height', '', ['class' => 'form-control'])}}--}}
+                {{--@if ($errors->has('height'))--}}
+                    {{--<span style="color: red;">--}}
+                        {{--<strong style="color: red;">{!! $errors->first('height') !!}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</div>--}}
             <div class="col-xs-6">
-                {{Form::label('length', 'Length')}}
-                {{Form::text('length', '', ['class' => 'form-control'])}}
-                @if ($errors->has('length'))
-                    <span style="color: red;">
-                        <strong style="color: red;">{!! $errors->first('length') !!}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="col-xs-6">
-                {{Form::label('width', 'Width')}}
-                {{Form::text('width', '', ['class' => 'form-control'])}}
-                @if ($errors->has('width'))
-                    <span style="color: red;">
-                        <strong style="color: red;">{!! $errors->first('width') !!}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="col-xs-6">
-                {{Form::label('height', 'Height')}}
-                {{Form::text('height', '', ['class' => 'form-control'])}}
-                @if ($errors->has('height'))
-                    <span style="color: red;">
-                        <strong style="color: red;">{!! $errors->first('height') !!}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="col-xs-6">
-                {{Form::label('weight', 'Weight')}}
+                {{Form::label('weight', 'Weight (KG)')}}
                 {{Form::text('weight', '', ['class' => 'form-control'])}}
                 @if ($errors->has('weight'))
                     <span style="color: red;">
@@ -101,7 +101,7 @@
                 @endif
             </div>
             <div class="col-xs-6">
-                {{Form::label('lead_time', 'Lead Time')}}
+                {{Form::label('lead_time', 'Lead Time (Days)')}}
                 {{Form::text('lead_time', '', ['class' => 'form-control'])}}
                 @if ($errors->has('lead_time'))
                     <span style="color: red;">
@@ -109,15 +109,15 @@
                     </span>
                 @endif
             </div>
-            <div class="col-xs-6">
-                {{Form::label('estimated_fba_cost_by_lcl', 'Estimated FBA Cost By Local')}}
-                {{Form::text('estimated_fba_cost_by_lcl', '', ['class' => 'form-control'])}}
-                @if ($errors->has('estimated_fba_cost_by_lcl'))
-                    <span style="color: red;">
-                        <strong style="color: red;">{!! $errors->first('estimated_fba_cost_by_lcl') !!}</strong>
-                    </span>
-                @endif
-            </div>
+            {{--<div class="col-xs-6">--}}
+                {{--{{Form::label('estimated_fba_cost_by_lcl', 'Estimated FBA Cost By Local')}}--}}
+                {{--{{Form::text('estimated_fba_cost_by_lcl', '', ['class' => 'form-control'])}}--}}
+                {{--@if ($errors->has('estimated_fba_cost_by_lcl'))--}}
+                    {{--<span style="color: red;">--}}
+                        {{--<strong style="color: red;">{!! $errors->first('estimated_fba_cost_by_lcl') !!}</strong>--}}
+                    {{--</span>--}}
+                {{--@endif--}}
+            {{--</div>--}}
             <div class="col-xs-6">
                 {{Form::label('similarity', 'Similarity')}}
                 {{Form::text('similarity', '', ['class' => 'form-control'])}}
