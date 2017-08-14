@@ -109,6 +109,15 @@
                     </span>
                 @endif
             </div>
+            <div class="col-xs-6">
+                {{Form::label('gold_supplier_year', 'Gold Supplier Year')}}
+                {{Form::text('gold_supplier_year', '', ['class' => 'form-control'])}}
+                @if ($errors->has('gold_supplier_year'))
+                    <span style="color: red;">
+                        <strong style="color: red;">{!! $errors->first('gold_supplier_year') !!}</strong>
+                    </span>
+                @endif
+            </div>
             {{--<div class="col-xs-6">--}}
                 {{--{{Form::label('estimated_fba_cost_by_lcl', 'Estimated FBA Cost By Local')}}--}}
                 {{--{{Form::text('estimated_fba_cost_by_lcl', '', ['class' => 'form-control'])}}--}}
@@ -124,15 +133,6 @@
                 @if ($errors->has('similarity'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('similarity') !!}</strong>
-                    </span>
-                @endif
-            </div>
-            <div class="col-xs-6">
-                {{Form::label('potential_opportunity', 'Potential Opportunity')}}
-                {{Form::text('potential_opportunity', '', ['class' => 'form-control'])}}
-                @if ($errors->has('potential_opportunity'))
-                    <span style="color: red;">
-                        <strong style="color: red;">{!! $errors->first('potential_opportunity') !!}</strong>
                     </span>
                 @endif
             </div>

@@ -8,7 +8,7 @@
     <script>
         $(function () {
 
-            @if ($errors->has('similarity') || $errors->has('potential_opportunity'))
+            @if ($errors->has('similarity'))
             $('#modal').modal('show');
             @endif
 
@@ -16,7 +16,6 @@
                 var alibabaItemId = $(this).attr('data-id');
                 $('#modal input#pc_alibaba_item_id').val(alibabaItemId);
                 $('#modal input#similarity').val('');
-                $('#modal input#potential_opportunity').val('');
                 $('span > strong').css('display', 'none');
             });
 
@@ -84,6 +83,7 @@
                         {{--<th>Length</th>--}}
                         {{--<th>Width</th>--}}
                         {{--<th>Height</th>--}}
+                        <th>Gold Supplier Year</th>
                         <th>Weight (KG)</th>
                         <th>MOQ</th>
                         <th>Lead Time (Days)</th>
@@ -104,6 +104,7 @@
                             {{--<td>{{ $alibabaItem->length }}</td>--}}
                             {{--<td>{{ $alibabaItem->width }}</td>--}}
                             {{--<td>{{ $alibabaItem->height }}</td>--}}
+                            <td>{{ $alibabaItem->gold_supplier_year }}</td>
                             <td>{{ $alibabaItem->weight }}</td>
                             <td>{{ $alibabaItem->moq }}</td>
                             <td>{{ $alibabaItem->lead_time }}</td>
@@ -139,15 +140,6 @@
                                 @if ($errors->has('similarity'))
                                     <span style="color: red;">
                                         <strong style="color: red;">{!! $errors->first('similarity') !!}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                            <div class="col-xs-6">
-                                {{Form::label('potential_opportunity', 'Potential Opportunity')}}
-                                {{Form::text('potential_opportunity', $alibabaItem->potential_opportunity, ['class' => 'form-control'])}}
-                                @if ($errors->has('potential_opportunity'))
-                                    <span style="color: red;">
-                                        <strong style="color: red;">{!! $errors->first('potential_opportunity') !!}</strong>
                                     </span>
                                 @endif
                             </div>
