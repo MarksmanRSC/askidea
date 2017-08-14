@@ -30,6 +30,7 @@ class CreatePcAlibabaItemsTable extends Migration
                 $table->float('moq')->nullable();
                 $table->float('lead_time')->nullable();
                 $table->float('estimated_fba_cost_by_lcl')->nullable();
+                $table->float('gold_supplier_year')->nullable();
 
                 $table->unsignedInteger('create_user_id');
                 $table->unsignedInteger('update_user_id');

@@ -161,12 +161,12 @@
                         {{--<th>Length</th>--}}
                         {{--<th>Width</th>--}}
                         {{--<th>Height</th>--}}
+                        <th>Gold Supplier Year</th>
                         <th>Weight (KG)</th>
                         <th>MOQ</th>
                         <th>Lead Time (Days)</th>
                         {{--<th>Estimated FBA Cost By Local</th>--}}
                         <th>Similarity</th>
-                        <th>Potential Opportunity</th>
                         <th>Created At</th>
                         <th>Updated At</th>
                     </tr>
@@ -192,12 +192,12 @@
                             {{--<td>{{ $alibabaItem->length }}</td>--}}
                             {{--<td>{{ $alibabaItem->width }}</td>--}}
                             {{--<td>{{ $alibabaItem->height }}</td>--}}
+                            <td>{{ $alibabaItem->gold_supplier_year }}</td>
                             <td>{{ $alibabaItem->weight }}</td>
                             <td>{{ $alibabaItem->moq }}</td>
                             <td>{{ $alibabaItem->lead_time }}</td>
                             {{--<td>{{ $alibabaItem->estimated_fba_cost_by_lcl }}</td>--}}
                             <td>{{ $alibabaItem->similarity }}</td>
-                            <td>{{ $alibabaItem->potential_opportunity }}</td>
                             <td>{{ $alibabaItem->created_at }}</td>
                             <td>{{ $alibabaItem->updated_at }}</td>
                         </tr>

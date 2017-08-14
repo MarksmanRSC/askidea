@@ -146,13 +146,12 @@ class PcAgentController extends Controller
     public function storeLinkAlibabaItem(Request $request, $request_id, $amazon_item_id) {
         $this->validate($request, [
             'pc_alibaba_item_id' => 'required|integer',
-            'similarity' => 'required|numeric',
-            'potential_opportunity' => 'required|numeric',
+            'similarity' => 'required|numeric'
         ]);
         DB::insert(DB::raw("
-        insert into pc_amazon_item_alibaba_items(pc_amazon_item_id, pc_alibaba_item_id, similarity, potential_opportunity, create_user_id, update_user_id) 
-        values (?, ?, ?, ?, ?, ?);
-        "), [$amazon_item_id, Input::get('pc_alibaba_item_id'), Input::get('similarity'), Input::get('potential_opportunity'), Auth::user()->id, Auth::user()->id]);
+        insert into pc_amazon_item_alibaba_items(pc_amazon_item_id, pc_alibaba_item_id, similarity, create_user_id, update_user_id) 
+        values (?, ?, ?, ?, ?);
+        "), [$amazon_item_id, Input::get('pc_alibaba_item_id'), Input::get('similarity'), Auth::user()->id, Auth::user()->id]);
 
         return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]));
     }
@@ -170,11 +169,11 @@ class PcAgentController extends Controller
             'width' => 'nullable|numeric',
             'height' => 'nullable|numeric',
             'weight' => 'nullable|numeric',
+            'gold_supplier_year' => 'nullable|numeric',
             'moq' => 'nullable|numeric',
             'lead_time' => 'nullable|numeric',
             'estimated_fba_cost_by_lcl' => 'nullable|numeric',
-            'similarity' => 'required|numeric',
-            'potential_opportunity' => 'required|numeric',
+            'similarity' => 'required|numeric'
         ]);
 
         $alibabaItem = PcAlibabaItem::create([
@@ -183,6 +182,7 @@ class PcAgentController extends Controller
             'alibaba_price_min' => Input::get('alibaba_price_min'),
             'length' => Input::get('length'),
             'width' => Input::get('width'),
+            'gold_supplier_year' => Input::get('gold_supplier_year'),
             'height' => Input::get('height'),
             'weight' => Input::get('weight'),
             'moq' => Input::get('moq'),
@@ -192,9 +192,9 @@ class PcAgentController extends Controller
             'update_user_id' => Auth::user()->id,
         ]);
         DB::insert(DB::raw("
-        insert into pc_amazon_item_alibaba_items(pc_amazon_item_id, pc_alibaba_item_id, similarity, potential_opportunity, create_user_id, update_user_id) 
-        values (?, ?, ?, ?, ?, ?);
-        "), [$amazon_item_id, $alibabaItem->id, Input::get('similarity'), Input::get('potential_opportunity'), Auth::user()->id, Auth::user()->id]);
+        insert into pc_amazon_item_alibaba_items(pc_amazon_item_id, pc_alibaba_item_id, similarity, create_user_id, update_user_id) 
+        values (?, ?, ?, ?, ?);
+        "), [$amazon_item_id, $alibabaItem->id, Input::get('similarity'), Auth::user()->id, Auth::user()->id]);
         return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]));
     }
 
@@ -206,8 +206,9 @@ class PcAgentController extends Controller
           pc_alibaba_items.height, pc_alibaba_items.weight, pc_alibaba_items.moq, pc_alibaba_items.lead_time, 
           pc_alibaba_items.estimated_fba_cost_by_lcl, pc_alibaba_items.create_user_id, 
           pc_alibaba_items.update_user_id, pc_alibaba_items.created_at, 
+          pc_alibaba_items.gold_supplier_year as gold_supplier_year,
           if (pc_alibaba_items.updated_at > pc_amazon_item_alibaba_items.updated_at, pc_alibaba_items.updated_at, pc_amazon_item_alibaba_items.updated_at) as updated_at, 
-          pc_amazon_item_alibaba_items.similarity, pc_amazon_item_alibaba_items.potential_opportunity
+          pc_amazon_item_alibaba_items.similarity
         from pc_alibaba_items
         join pc_amazon_item_alibaba_items on pc_amazon_item_alibaba_items.pc_alibaba_item_id = pc_alibaba_items.id
         where pc_alibaba_items.id = ?
@@ -231,13 +232,13 @@ class PcAgentController extends Controller
             'alibaba_price_min' => 'nullable|numeric',
             'length' => 'nullable|numeric',
             'width' => 'nullable|numeric',
+            'gold_supplier_year' => 'nullable|numeric',
             'height' => 'nullable|numeric',
             'weight' => 'nullable|numeric',
             'moq' => 'nullable|numeric',
             'lead_time' => 'nullable|numeric',
             'estimated_fba_cost_by_lcl' => 'nullable|numeric',
-            'similarity' => 'required|numeric',
-            'potential_opportunity' => 'required|numeric',
+            'similarity' => 'required|numeric'
         ]);
         $alibabaItem = PcAlibabaItem::findOrFail($alibaba_item_id);
         $alibabaItem->update([
@@ -248,6 +249,7 @@ class PcAgentController extends Controller
             'width' => Input::get('width'),
             'height' => Input::get('height'),
             'weight' => Input::get('weight'),
+            'gold_supplier_year' => Input::get('gold_supplier_year'),
             'moq' => Input::get('moq'),
             'lead_time' => Input::get('lead_time'),
             'estimated_fba_cost_by_lcl' => Input::get('estimated_fba_cost_by_lcl'),
@@ -255,9 +257,9 @@ class PcAgentController extends Controller
         ]);
         DB::update(DB::raw("
         update pc_amazon_item_alibaba_items
-        set similarity = ?, potential_opportunity = ?
+        set similarity = ?
         where pc_alibaba_item_id = ? and pc_amazon_item_id = ?
-        "), [Input::get('similarity'), Input::get('potential_opportunity'), $alibaba_item_id, $amazon_item_id]);
+        "), [Input::get('similarity'), $alibaba_item_id, $amazon_item_id]);
         return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]));
     }
 

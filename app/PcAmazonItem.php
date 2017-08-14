@@ -17,8 +17,9 @@ class PcAmazonItem extends Model
           pc_alibaba_items.height, pc_alibaba_items.weight, pc_alibaba_items.moq, pc_alibaba_items.lead_time, 
           pc_alibaba_items.estimated_fba_cost_by_lcl, pc_alibaba_items.create_user_id, 
           pc_alibaba_items.update_user_id, pc_alibaba_items.created_at, 
+          pc_alibaba_items.gold_supplier_year as gold_supplier_year,
           if (pc_alibaba_items.updated_at > pc_amazon_item_alibaba_items.updated_at, pc_alibaba_items.updated_at, pc_amazon_item_alibaba_items.updated_at) as updated_at, 
-          pc_amazon_item_alibaba_items.similarity, pc_amazon_item_alibaba_items.potential_opportunity
+          pc_amazon_item_alibaba_items.similarity
         from pc_alibaba_items
         join pc_amazon_item_alibaba_items on pc_amazon_item_alibaba_items.pc_alibaba_item_id = pc_alibaba_items.id
         where pc_amazon_item_alibaba_items.pc_amazon_item_id = ?

@@ -135,6 +135,7 @@ class PcRequestController extends Controller
            pc_amazon_items.number_of_review as number_of_review,
            pc_alibaba_items.id as pc_alibaba_item_id,
            pc_alibaba_items.alibaba_url as alibaba_url,
+           pc_alibaba_items.gold_supplier_year as gold_supplier_year,
            pc_alibaba_items.alibaba_price_max as alibaba_price_max,
            pc_alibaba_items.alibaba_price_min as alibaba_price_min,
            pc_alibaba_items.weight as weight,
@@ -155,7 +156,110 @@ class PcRequestController extends Controller
             return response()->json(['message' => 'item id does not exist or item is hidden'], 400);
         }
 
+        foreach ($re as $row) {
+            if($row->weight == null) {
+                $row->estimated_freight_cost = null;
+            } else {
+                $row->estimated_freight_cost = $row->weight * 4.519;
+            }
+
+            if($row->list_price != null && $row->amazon_fee != null
+                && $row->alibaba_price_max != null && $row->alibaba_price_min != null
+                && $row->alibaba_price_max != 0 && $row->alibaba_price_min != 0) {
+                $row->max_roi = ($row->list_price - $row->amazon_fee - $row->estimated_freight_cost - $row->alibaba_price_min) / $row->alibaba_price_min;
+                $row->min_roi = ($row->list_price - $row->amazon_fee - $row->estimated_freight_cost - $row->alibaba_price_max) / $row->alibaba_price_max;
+                if($row->max_roi < 0) {
+                    $row->max_roi = 0;
+                }
+                if($row->min_roi < 0) {
+                    $row->min_roi = 0;
+                }
+            } else {
+                $row->max_roi = null;
+                $row->min_roi = null;
+            }
+
+            $row->potential_opportunity = $this->calculatePotentialOpportunity($row);
+        }
+
         return response()->json($re);
+    }
+
+    private function calculatePotentialOpportunity($item) {
+        if (!$item || !$item->list_price || !$item->rank || !$item->number_of_review || !$item->moq
+            || !$item->lead_time || !$item->max_roi || !$item->min_roi || !$item->gold_supplier_year || !$item->similarity) {
+            return null;
+        }
+
+        $score = 100;
+
+        if($item->list_price < 10) {
+            $score -= 5;
+        }
+
+        if($item->rank >= 150000 && $item->rank < 200000) {
+            $score -= 1;
+        } elseif($item->rank >= 200000 && $item->rank < 250000) {
+            $score -= 2;
+        } elseif($item->rank >= 250000) {
+            $score -= 3;
+        }
+
+        if($item->number_of_review < 5) {
+            $score -= 2;
+        } elseif($item->number_of_review >= 5 && $item->number_of_review < 10) {
+            $score -= 1;
+        }
+
+        if($item->moq >= 500 && $item->moq < 1000) {
+            $score -= 1;
+        } elseif($item->moq >= 1000) {
+            $score -= 2;
+        }
+
+        if($item->lead_time >= 30 && $item->lead_time < 60) {
+            $score -= 2;
+        } elseif($item->lead_time >= 60) {
+            $score -= 5;
+        }
+
+        if($item->max_roi < 0.7) {
+            $score -= 20;
+        } elseif($item->max_roi >= 0.7 && $item->max_roi < 0.8) {
+            $score -= 10;
+        }
+
+        if($item->min_roi < 0.2) {
+            $score -= 50;
+        } elseif($item->min_roi >= 0.2 && $item->min_roi < 0.3) {
+            $score -= 30;
+        } elseif($item->min_roi >= 0.3 && $item->min_roi < 0.4) {
+            $score -= 20;
+        } elseif($item->min_roi >= 0.4 && $item->min_roi < 0.5) {
+            $score -= 15;
+        } elseif($item->min_roi >= 0.5 && $item->min_roi < 0.7) {
+            $score -= 10;
+        }
+
+        if($item->gold_supplier_year == 0) {
+            $score -= 20;
+        } elseif($item->gold_supplier_year == 1) {
+            $score -= 10;
+        } elseif($item->gold_supplier_year == 2) {
+            $score -= 5;
+        } elseif($item->gold_supplier_year == 3) {
+            $score -= 1;
+        }
+
+        if($item->similarity < 5) {
+            $score -= 5;
+        }
+
+        if($score < 0) {
+            return 0;
+        } else {
+            return $score;
+        }
     }
 
     /**
