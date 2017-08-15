@@ -60,6 +60,10 @@ class PcRequestController extends Controller
           pc_alibaba_items.alibaba_price_min as alibaba_price_min,
           pc_alibaba_items.weight as weight,
           pc_amazon_items.estimated_sales as estimated_sales,
+          pc_amazon_items.number_of_review as number_of_review,
+          pc_alibaba_items.lead_time as lead_time,
+          pc_alibaba_items.gold_supplier_year as gold_supplier_year,
+          pc_amazon_item_alibaba_items.similarity as similarity,
           pc_alibaba_items.moq as moq
         from pc_request_user_amazon_items
         join pc_user_amazon_items on pc_request_user_amazon_items.pc_user_amazon_item_id = pc_user_amazon_items.id
@@ -68,6 +72,32 @@ class PcRequestController extends Controller
         left join pc_alibaba_items on pc_alibaba_items.id = pc_amazon_item_alibaba_items.pc_alibaba_item_id
         where pc_user_amazon_items.user_id = ? and pc_request_user_amazon_items.status = 'Completed'
         "), [Auth::user()->id]);
+
+        foreach ($re as $row) {
+            if($row->weight == null) {
+                $row->estimated_freight_cost = null;
+            } else {
+                $row->estimated_freight_cost = $row->weight * 4.519;
+            }
+
+            if($row->list_price != null && $row->amazon_fee != null
+                && $row->alibaba_price_max != null && $row->alibaba_price_min != null
+                && $row->alibaba_price_max != 0 && $row->alibaba_price_min != 0) {
+                $row->max_roi = ($row->list_price - $row->amazon_fee - $row->estimated_freight_cost - $row->alibaba_price_min) / $row->alibaba_price_min;
+                $row->min_roi = ($row->list_price - $row->amazon_fee - $row->estimated_freight_cost - $row->alibaba_price_max) / $row->alibaba_price_max;
+                if($row->max_roi < 0) {
+                    $row->max_roi = 0;
+                }
+                if($row->min_roi < 0) {
+                    $row->min_roi = 0;
+                }
+            } else {
+                $row->max_roi = null;
+                $row->min_roi = null;
+            }
+
+            $row->potential_opportunity = $this->calculatePotentialOpportunity($row);
+        }
 
         return response()->json($re);
     }
