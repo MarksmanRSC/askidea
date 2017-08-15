@@ -216,8 +216,8 @@ class PcRequestController extends Controller
     }
 
     private function calculatePotentialOpportunity($item) {
-        if (!$item || !$item->list_price || !$item->rank || !$item->number_of_review || !$item->moq
-            || !$item->lead_time || !$item->max_roi || !$item->min_roi || !$item->gold_supplier_year || !$item->similarity) {
+        if ($item == null || $item->list_price == null || $item->rank == null || $item->number_of_review == null || $item->moq
+            == null || $item->lead_time == null || $item->max_roi == null || $item->min_roi == null || $item->gold_supplier_year == null || $item->similarity == null) {
             return null;
         }
 
