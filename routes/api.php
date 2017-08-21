@@ -25,8 +25,6 @@ Route::group(['middleware' => ['auth:api']], function () {
 
 Route::group(['middleware' => ['auth:api', 'membership']], function () {
     Route::get('pc_result_summary', 'Api\PcRequestController@getResultSummary');
-    Route::get('pc_request', 'Api\PcRequestController@getRequestSummary');
-    Route::get('pc_request/{id}', 'Api\PcRequestController@getDetail');
     Route::get('pc_request_item/{id}', 'Api\PcRequestController@getItemDetail');
     Route::post('pc_request', 'Api\PcRequestController@create');
 });

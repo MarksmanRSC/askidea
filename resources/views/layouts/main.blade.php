@@ -98,6 +98,29 @@
     </div><!-- /.container-fluid -->
 </nav>
 
+
+<div style="position: fixed; top: 0; width: 100%; z-index: 9999; display: none;" id="globalMessage">
+    <div class="row">
+        <div class="col-xs-12">
+            @if ($errors->has('global_success_message'))
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span id="globalSuccessMessage">{{ $errors->first('global_success_message') }}</span>
+                </div>
+            @endif
+
+            @if ($errors->has('global_danger_message'))
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span id="globalDangerMessage">{{ $errors->first('global_danger_message') }}</span>
+                </div>
+            @endif
+        </div>
+    </div>
+</div>
+
+
+
 @yield("content")
 
 <footer>
@@ -141,6 +164,10 @@
 
 <script>
     $(document).ready(function () {
+        if($('#globalMessage #globalSuccessMessage').text() || $('#globalMessage #globalDangerMessage').text()) {
+            $('#globalMessage').show();
+            $('#globalMessage').delay(2500).fadeOut('slow');
+        }
 
         $(".attach_field").change(function () {
             RedmineHelpdeskWidget.upload_file()

@@ -20,12 +20,14 @@ class PcAgentController extends Controller
           count(1) as number_of_requested_items,
           users1.name as user_name,
           users1.email as user_email,
+          agent.name as agent_name,
           roles.name as user_role,
           pc_requests.created_at as pc_request_created_at,
           (select count(1) from pc_request_user_amazon_items where pc_request_id = pc_requests.id and status = 'Completed') as number_of_completed_items
         from pc_requests
         join pc_request_user_amazon_items on pc_request_user_amazon_items.pc_request_id = pc_requests.id
         join users as users1 on users1.id = pc_requests.user_id
+        left join users as agent on agent.id = pc_requests.agent_user_id
         join roles on users1.role_id = roles.id
         group by pc_requests.id, pc_requests.status, pc_requests.created_at
         order by pc_requests.created_at desc
@@ -39,7 +41,9 @@ class PcAgentController extends Controller
             select
               pc_requests.id as pc_request_id,
               pc_requests.status as status,
-              users.name as user_name,
+              user.name as user_name,
+              request_agent.name as request_agent_name,
+              amazon_agent.name as amazon_agent_name,
               pc_amazon_items.id as pc_amazon_item_id,
               pc_amazon_items.product_name as product_name,
               pc_amazon_items.asin as asin,
@@ -49,7 +53,9 @@ class PcAgentController extends Controller
             join pc_request_user_amazon_items on pc_request_user_amazon_items.pc_request_id = pc_requests.id
             join pc_user_amazon_items on pc_user_amazon_items.id = pc_request_user_amazon_items.pc_user_amazon_item_id
             join pc_amazon_items on pc_amazon_items.id = pc_user_amazon_items.pc_amazon_item_id
-            join users on users.id = pc_user_amazon_items.user_id
+            join users as user on user.id = pc_user_amazon_items.user_id
+            left join users as request_agent on request_agent.id = pc_requests.agent_user_id
+            left join users as amazon_agent on amazon_agent.id = pc_request_user_amazon_items.agent_user_id
             where pc_requests.id = ?
             "), [$request_id]);
         if(count($request) === 0) {
@@ -106,7 +112,11 @@ class PcAgentController extends Controller
             'amazon_fee' => Input::get('amazon_fee'),
             'number_of_review' => Input::get('number_of_review')
         ]);
-        return redirect(route('pc_agent.amazon', ['requestId' => $request_id, 'amazon_item_id' => $amazon_item_id]));
+
+        $this->setLastModifyedAgentForAmazonItem($request_id, $amazon_item_id, Auth::user()->id);
+
+        return redirect(route('pc_agent.amazon', ['requestId' => $request_id, 'amazon_item_id' => $amazon_item_id]))
+            ->withErrors(['global_success_message' => 'Save Successfully']);
     }
 
     public function markAmazonCompleted($request_id, $amazon_item_id) {
@@ -129,7 +139,11 @@ class PcAgentController extends Controller
           status)
         where pc_requests.id = ?
         "), [$request_id, $request_id]);
-        return redirect(route('pc_agent.request', ['request_id' => $request_id]));
+
+        $this->setLastModifyedAgentForAmazonItem($request_id, $amazon_item_id, Auth::user()->id);
+
+        return redirect(route('pc_agent.request', ['request_id' => $request_id]))
+            ->withErrors(['global_success_message' => "Successfully mark Amazon Item #{$amazon_item_id} as \"Completed\""]);
     }
 
     public function getLinkAlibabaItem($request_id, $amazon_item_id) {
@@ -153,7 +167,10 @@ class PcAgentController extends Controller
         values (?, ?, ?, ?, ?);
         "), [$amazon_item_id, Input::get('pc_alibaba_item_id'), Input::get('similarity'), Auth::user()->id, Auth::user()->id]);
 
-        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]));
+        $this->setLastModifyedAgentForAmazonItem($request_id, $amazon_item_id, Auth::user()->id);
+
+        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]))
+            ->withErrors(['global_success_message' => 'Link Alibaba Item Successfully']);
     }
 
     public function createAlibabaItem($request_id, $amazon_item_id) {
@@ -195,7 +212,11 @@ class PcAgentController extends Controller
         insert into pc_amazon_item_alibaba_items(pc_amazon_item_id, pc_alibaba_item_id, similarity, create_user_id, update_user_id) 
         values (?, ?, ?, ?, ?);
         "), [$amazon_item_id, $alibabaItem->id, Input::get('similarity'), Auth::user()->id, Auth::user()->id]);
-        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]));
+
+        $this->setLastModifyedAgentForAmazonItem($request_id, $amazon_item_id, Auth::user()->id);
+
+        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]))
+            ->withErrors(['global_success_message' => 'Create Alibaba item successfully']);
     }
 
     public function editAlibabaItem($request_id, $amazon_item_id, $alibaba_item_id) {
@@ -218,6 +239,7 @@ class PcAgentController extends Controller
         } else {
             $alibabaItem = $alibabaItem[0];
         }
+
         return view('pc.agent.alibaba_edit', [
             'requestId' => $request_id,
             'amazonItemId' => $amazon_item_id,
@@ -260,14 +282,48 @@ class PcAgentController extends Controller
         set similarity = ?
         where pc_alibaba_item_id = ? and pc_amazon_item_id = ?
         "), [Input::get('similarity'), $alibaba_item_id, $amazon_item_id]);
-        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]));
+
+        $this->setLastModifyedAgentForAmazonItem($request_id, $amazon_item_id, Auth::user()->id);
+
+        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]))
+            ->withErrors(['global_success_message' => 'Update Alibaba item successfully']);
     }
 
     public function deleteAlibabaItem($request_id, $amazon_item_id, $alibaba_item_id) {
         DB::update(DB::raw("
         delete from pc_amazon_item_alibaba_items where pc_alibaba_item_id = ? and pc_amazon_item_id = ?
         "), [$alibaba_item_id, $amazon_item_id]);
-        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]));
+
+        $this->setLastModifyedAgentForAmazonItem($request_id, $amazon_item_id, Auth::user()->id);
+
+        return redirect(route('pc_agent.amazon', ['request_id' => $request_id, 'amazon_item_id' => $amazon_item_id]))
+            ->withErrors(['global_success_message' => 'Un-link Alibaba item successfully']);
     }
 
+    private function setLastModifyedAgentForRequest($request_id, $agent_user_id) {
+        DB::update(DB::raw("
+        update pc_requests
+        set agent_user_id = ?
+        where id = ?
+        "), [$agent_user_id, $request_id]);
+    }
+
+    private function setLastModifyedAgentForAmazonItem($request_id, $amazon_id, $agent_user_id) {
+        DB::update(DB::raw("
+        update pc_request_user_amazon_items
+        set agent_user_id = ?
+        where pc_request_id = ? 
+        and pc_user_amazon_item_id = (
+          select id from pc_user_amazon_items 
+          where pc_amazon_item_id = ?
+          and user_id = (
+            select user_id from pc_requests where id = ?
+          )
+        )
+        "), [
+            $agent_user_id, $request_id, $amazon_id, $request_id
+        ]);
+
+        $this->setLastModifyedAgentForRequest($request_id, $agent_user_id);
+    }
 }
