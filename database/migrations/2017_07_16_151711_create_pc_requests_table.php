@@ -20,6 +20,7 @@ class CreatePcRequestsTable extends Migration
             Schema::create($this->tableName, function (Blueprint $table) {
                 $table->increments('id')->unsigned();
                 $table->unsignedInteger('user_id');
+                $table->unsignedInteger('agent_user_id')->nullable();
                 $table->string('status')->default("Pending");
 
                 $table->dateTime('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
@@ -29,6 +30,11 @@ class CreatePcRequestsTable extends Migration
                     ->references('id')->on('users')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
+
+                $table->foreign('agent_user_id')
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
             });
             Schema::enableForeignKeyConstraints();
         }

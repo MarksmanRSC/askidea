@@ -70,6 +70,7 @@
                             <th>Progress</th>
                             <th>Status</th>
                             <th>Number of Requested Items</th>
+                            <th>Agent (Last Action)</th>
                             <th>Created At</th>
                             <th>Action</th>
                         </tr>
@@ -86,6 +87,7 @@
                                 </td>
                                 <td>{{ $request->status }}</td>
                                 <td>{{ $request->number_of_requested_items }}</td>
+                                <td>{{ $request->agent_name or 'N/A' }}</td>
                                 <td>{{ $request->pc_request_created_at }}</td>
                                 <td>
                                     <a href="{{ route('pc_agent.request', ['id' => $request->pc_request_id]) }}" class="btn btn-primary">View</a>

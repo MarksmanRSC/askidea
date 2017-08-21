@@ -14,6 +14,13 @@
 
 
 @section('pc_content')
+
+    @include('pc.agent.warning', [
+        'id' => "saveChangeBtn",
+        'msg' => "Your change will be saved",
+        'formId' => "alibabaEditForm"
+    ])
+
     <div class="row">
         <div class="col-xs-12">
             <ol class="breadcrumb">
@@ -27,7 +34,7 @@
 
     <div class="row" style="margin-top: 16px;">
         <div class="col-xs-12">
-            {{Form::open(['route' => ['pc_agent.update_alibaba', $requestId, $amazonItemId, $alibabaItem->id]])}}
+            {{Form::open(['route' => ['pc_agent.update_alibaba', $requestId, $amazonItemId, $alibabaItem->id], 'id' => 'alibabaEditForm'])}}
             <input type="hidden" name="_method" value="PUT">
             <div class="col-xs-6">
                 {{Form::label('alibaba_url', 'URL')}}
@@ -40,7 +47,7 @@
             </div>
             <div class="col-xs-6">
                 {{Form::label('alibaba_price_max', 'Price Max ($)')}}
-                {{Form::text('alibaba_price_max', $alibabaItem->alibaba_price_max, ['class' => 'form-control'])}}
+                {{Form::number('alibaba_price_max', $alibabaItem->alibaba_price_max, ['class' => 'form-control'])}}
                 @if ($errors->has('alibaba_price_max'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('alibaba_price_max') !!}</strong>
@@ -49,43 +56,16 @@
             </div>
             <div class="col-xs-6">
                 {{Form::label('alibaba_price_min', 'Price Min ($)')}}
-                {{Form::text('alibaba_price_min', $alibabaItem->alibaba_price_min, ['class' => 'form-control'])}}
+                {{Form::number('alibaba_price_min', $alibabaItem->alibaba_price_min, ['class' => 'form-control'])}}
                 @if ($errors->has('alibaba_price_min'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('alibaba_price_min') !!}</strong>
                     </span>
                 @endif
             </div>
-            {{--<div class="col-xs-6">--}}
-                {{--{{Form::label('length', 'Length')}}--}}
-                {{--{{Form::text('length', $alibabaItem->length, ['class' => 'form-control'])}}--}}
-                {{--@if ($errors->has('length'))--}}
-                    {{--<span style="color: red;">--}}
-                        {{--<strong style="color: red;">{!! $errors->first('length') !!}</strong>--}}
-                    {{--</span>--}}
-                {{--@endif--}}
-            {{--</div>--}}
-            {{--<div class="col-xs-6">--}}
-                {{--{{Form::label('width', 'Width')}}--}}
-                {{--{{Form::text('width', $alibabaItem->width, ['class' => 'form-control'])}}--}}
-                {{--@if ($errors->has('width'))--}}
-                    {{--<span style="color: red;">--}}
-                        {{--<strong style="color: red;">{!! $errors->first('width') !!}</strong>--}}
-                    {{--</span>--}}
-                {{--@endif--}}
-            {{--</div>--}}
-            {{--<div class="col-xs-6">--}}
-                {{--{{Form::label('height', 'Height')}}--}}
-                {{--{{Form::text('height', $alibabaItem->height, ['class' => 'form-control'])}}--}}
-                {{--@if ($errors->has('height'))--}}
-                    {{--<span style="color: red;">--}}
-                        {{--<strong style="color: red;">{!! $errors->first('height') !!}</strong>--}}
-                    {{--</span>--}}
-                {{--@endif--}}
-            {{--</div>--}}
             <div class="col-xs-6">
                 {{Form::label('weight', 'Weight (KG)')}}
-                {{Form::text('weight', $alibabaItem->weight, ['class' => 'form-control'])}}
+                {{Form::number('weight', $alibabaItem->weight, ['class' => 'form-control'])}}
                 @if ($errors->has('weight'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('weight') !!}</strong>
@@ -94,7 +74,7 @@
             </div>
             <div class="col-xs-6">
                 {{Form::label('moq', 'MOQ')}}
-                {{Form::text('moq', $alibabaItem->moq, ['class' => 'form-control'])}}
+                {{Form::number('moq', $alibabaItem->moq, ['class' => 'form-control'])}}
                 @if ($errors->has('moq'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('moq') !!}</strong>
@@ -103,7 +83,7 @@
             </div>
             <div class="col-xs-6">
                 {{Form::label('lead_time', 'Lead Time (Days)')}}
-                {{Form::text('lead_time', $alibabaItem->lead_time, ['class' => 'form-control'])}}
+                {{Form::number('lead_time', $alibabaItem->lead_time, ['class' => 'form-control'])}}
                 @if ($errors->has('lead_time'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('lead_time') !!}</strong>
@@ -112,25 +92,16 @@
             </div>
             <div class="col-xs-6">
                 {{Form::label('gold_supplier_year', 'Gold Supplier Year')}}
-                {{Form::text('gold_supplier_year', $alibabaItem->gold_supplier_year, ['class' => 'form-control'])}}
+                {{Form::number('gold_supplier_year', $alibabaItem->gold_supplier_year, ['class' => 'form-control'])}}
                 @if ($errors->has('gold_supplier_year'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('gold_supplier_year') !!}</strong>
                     </span>
                 @endif
             </div>
-            {{--<div class="col-xs-6">--}}
-                {{--{{Form::label('estimated_fba_cost_by_lcl', 'Estimated FBA Cost By Local')}}--}}
-                {{--{{Form::text('estimated_fba_cost_by_lcl', $alibabaItem->estimated_fba_cost_by_lcl, ['class' => 'form-control'])}}--}}
-                {{--@if ($errors->has('estimated_fba_cost_by_lcl'))--}}
-                    {{--<span style="color: red;">--}}
-                        {{--<strong style="color: red;">{!! $errors->first('estimated_fba_cost_by_lcl') !!}</strong>--}}
-                    {{--</span>--}}
-                {{--@endif--}}
-            {{--</div>--}}
             <div class="col-xs-6">
                 {{Form::label('similarity', 'Similarity')}}
-                {{Form::text('similarity', $alibabaItem->similarity, ['class' => 'form-control'])}}
+                {{Form::number('similarity', $alibabaItem->similarity, ['class' => 'form-control'])}}
                 @if ($errors->has('similarity'))
                     <span style="color: red;">
                         <strong style="color: red;">{!! $errors->first('similarity') !!}</strong>
@@ -139,7 +110,7 @@
             </div>
             <div class="col-xs-12">
                 <a href="{{ route('pc_agent.amazon', ['request_id' => $requestId, 'amazon_item_id' => $amazonItemId]) }}" class="btn btn-default" style="margin-right: 8px;">Cancel</a>
-                {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#saveChangeBtn">Submit</button>
             </div>
             {{Form::close()}}
         </div>

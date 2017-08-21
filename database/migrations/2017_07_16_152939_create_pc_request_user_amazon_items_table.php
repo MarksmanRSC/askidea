@@ -20,6 +20,7 @@ class CreatePcRequestUserAmazonItemsTable extends Migration
             Schema::create($this->tableName, function (Blueprint $table) {
                 $table->increments('id')->unsigned();
                 $table->unsignedInteger('pc_request_id');
+                $table->unsignedInteger('agent_user_id')->nullable();
                 $table->unsignedInteger('pc_user_amazon_item_id');
                 $table->string('status')->default('Pending');
 
@@ -37,6 +38,11 @@ class CreatePcRequestUserAmazonItemsTable extends Migration
                     ->references('id')->on('pc_user_amazon_items')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
+
+                $table->foreign('agent_user_id')
+                    ->references('id')->on('users')
+                    ->onUpdate('cascade')
+                    ->onDelete('set null');
             });
             Schema::enableForeignKeyConstraints();
         }
