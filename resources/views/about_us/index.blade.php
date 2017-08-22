@@ -262,6 +262,32 @@
                     <div class="clearfix"></div>
                 </div>
             </div>
+            
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 animate-box fadeIn animated-fast">
+                <div class="profile">
+                    <div class="profilePic" style="background-image: url('/img/team/tom.jpg');">
+                        <div style="text-align: center; background: rgba(0,55,99, 0.5);">
+                            <h4 class="name">Tom</h4>
+                            <h5 class="title">Sourcing Manager</h5>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 animate-box fadeIn animated-fast">
+                <div class="profile">
+                    <div class="profilePic" style="background-image: url('/img/team/omer.jpg');">
+                        <div style="text-align: center; background: rgba(0,55,99, 0.5);">
+                            <h4 class="name">Omer</h4>
+                            <h5 class="title">Sourcing Manager</h5>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
 
         </div>
 
