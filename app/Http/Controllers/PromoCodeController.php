@@ -82,7 +82,7 @@ class PromoCodeController extends Controller
 
     private function processPromoCode($typeId, $userId) {
         if($typeId === 1) { // grant sliver membership, increase limit: 30
-            if(Auth::user()->role->id === 999) {
+            if(!in_array(Auth::user()->role->id, [1, 2])) {
                 Auth::user()->update([
                     'role_id' => 4,
                     'role_expired_at' => Carbon::now()->addYear(1),
@@ -91,6 +91,18 @@ class PromoCodeController extends Controller
             } else {
                 Auth::user()->update([
                     'pc_limit' => Auth::user()->pc_limit + 30
+                ]);
+            }
+        } elseif($typeId === 2) { // grant gold membership, set limit: 5
+            if(!in_array(Auth::user()->role->id, [1, 2])) {
+                Auth::user()->update([
+                    'role_id' => 3,
+                    'role_expired_at' => Carbon::now()->addYear(1),
+                    'pc_limit' => 5
+                ]);
+            } else {
+                Auth::user()->update([
+                    'pc_limit' => Auth::user()->pc_limit + 5
                 ]);
             }
         }
