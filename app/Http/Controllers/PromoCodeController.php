@@ -39,7 +39,16 @@ class PromoCodeController extends Controller
 
         $promoCode = $request->all()['promo_code'];
 
-        $re = PromoCode::join('promo_code_types', 'promo_code_type_id', '=', 'promo_code_types.id')
+        $re = PromoCode::select(DB::raw("
+        promo_codes.id as id,
+        promo_code_type_id,
+        promo_code,
+        remaining_quantity,
+        is_reusable,
+        description,
+        definition,
+        success_message
+        "))->join('promo_code_types', 'promo_code_type_id', '=', 'promo_code_types.id')
             ->where('promo_code', $promoCode)->get();
 
         if(count($re) === 0) {
